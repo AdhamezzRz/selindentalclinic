@@ -30,8 +30,8 @@ function clinicNode(lang) {
     name: 'SÉLIN Dental Aesthetics',
     alternateName: ['SELIN Dental Aesthetics', 'Selin Dental', 'سيلين لتجميل الأسنان'],
     description: lang === 'ar'
-      ? 'عيادة سيلين لتجميل الأسنان مع د. وليد زكي ود. محمد خالد: فينير، تصميم ابتسامة رقمي، زراعة، تبييض، تقويم شفاف وتيجان زركونيا.'
-      : 'SÉLIN Dental Aesthetics with Dr. Walid Zaki and Dr. Mohammed Khaled: porcelain veneers, digital smile design, dental implants, whitening, clear aligners and zirconia crowns.',
+      ? 'عيادة سيلين لتجميل الأسنان في القاهرة الجديدة (إيترنا هيلثكير سيتي، كمبوند ميفيدا) مع د. وليد زكي ود. محمد خالد: فينير، تصميم ابتسامة رقمي، زراعة، تبييض، تقويم شفاف وتيجان زركونيا.'
+      : 'SÉLIN Dental Aesthetics in New Cairo (Eterna Healthcare City, Mivida) with Dr. Walid Zaki and Dr. Mohammed Khaled: porcelain veneers, digital smile design, dental implants, whitening, clear aligners and zirconia crowns.',
     url: BASE() + '/',
     logo: { '@type': 'ImageObject', '@id': ID.logo(), url: abs('/img/mark.svg') },
     image: [abs('/media/poster.jpg'), abs('/media/tour/t07.jpg'), abs('/media/tour/t02.jpg')],
@@ -40,6 +40,13 @@ function clinicNode(lang) {
     priceRange: loc.priceRange || undefined,
     currenciesAccepted: loc.country === 'EG' ? 'EGP' : undefined,
     knowsLanguage: ['en', 'ar'],
+    areaServed: [
+      { '@type': 'City', name: 'New Cairo' },
+      { '@type': 'City', name: 'Cairo' },
+      { '@type': 'Place', name: 'Mivida' },
+      { '@type': 'Place', name: 'Fifth Settlement' },
+    ],
+    containedInPlace: { '@type': 'Place', name: 'Eterna Healthcare City, Mivida, New Cairo' },
     medicalSpecialty: 'Dentistry',
     isAcceptingNewPatients: true,
     address: hasAddress

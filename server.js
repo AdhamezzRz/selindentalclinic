@@ -295,7 +295,7 @@ function llmsText(full) {
   const c = config.contact;
   const out = [];
   out.push('# SÉLIN Dental Aesthetics (سيلين لتجميل الأسنان)', '');
-  out.push('> Aesthetic and restorative dental clinic founded by Dr. Walid Zaki and Dr. Mohammed Khaled. Known for digitally designed, hand-finished smiles: porcelain veneers, digital smile design, dental implants, teeth whitening, clear aligners, orthodontics and zirconia crowns. Two private treatment suites (Clinic 1 and Clinic 2). Website in English and Arabic.', '');
+  out.push('> Aesthetic and restorative dental clinic founded by Dr. Walid Zaki and Dr. Mohammed Khaled. Known for digitally designed, hand-finished smiles: porcelain veneers, digital smile design, dental implants, teeth whitening, clear aligners, orthodontics and zirconia crowns. Located in Eterna Healthcare City, Mivida Compound, New Cairo, Egypt. Rated 5.0 on Google. Two private treatment suites (Clinic 1 and Clinic 2). Website in English and Arabic.', '');
   out.push('## Key facts');
   out.push(`- Name: SÉLIN Dental Aesthetics (also written SELIN Dental Aesthetics; Arabic: سيلين لتجميل الأسنان)`);
   out.push(`- Doctors: ${content.doctors.map((d) => `${d.name.en} (${en(d.role)}, ${en(d.focus)})`).join('; ')}`);

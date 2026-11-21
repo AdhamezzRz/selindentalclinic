@@ -2,11 +2,11 @@
 const LANGS = ['en', 'ar'];
 
 const ui = {
-  'meta.title': { en: 'SÉLIN Dental Aesthetics | Veneers, Implants & Smile Design Clinic', ar: 'سيلين لتجميل الأسنان | فينير وزراعة وتصميم ابتسامة' },
+  'meta.title': { en: 'SÉLIN Dental Aesthetics | Veneers & Smile Design in New Cairo', ar: 'سيلين لتجميل الأسنان | فينير وتصميم ابتسامة في القاهرة الجديدة' },
   'doctors.seo': { en: 'Dr. Walid Zaki & Dr. Mohammed Khaled — Our Dentists', ar: 'د. وليد زكي ود. محمد خالد — أطباؤنا' },
   'meta.desc': {
-    en: 'SÉLIN Dental Aesthetics by Dr. Walid Zaki & Dr. Mohammed Khaled. Veneers, digital smile design, implants, whitening and clear aligners, crafted with precision in a calm, private clinic.',
-    ar: 'سيلين لتجميل الأسنان مع د. وليد زكي ود. محمد خالد. فينير وتصميم ابتسامة رقمي وزراعة وتبييض وتقويم شفاف بدقة عالية في عيادة هادئة وخاصة.',
+    en: 'SÉLIN Dental Aesthetics in New Cairo (Eterna Healthcare City, Mivida) by Dr. Walid Zaki & Dr. Mohammed Khaled. 5.0★ on Google. Porcelain veneers, digital smile design, implants, whitening and clear aligners.',
+    ar: 'سيلين لتجميل الأسنان في القاهرة الجديدة (إيترنا هيلثكير سيتي، ميفيدا) مع د. وليد زكي ود. محمد خالد. تقييم 5.0★ على جوجل. فينير وتصميم ابتسامة رقمي وزراعة وتبييض وتقويم شفاف.',
   },
 
   'nav.home': { en: 'Home', ar: 'الرئيسية' },

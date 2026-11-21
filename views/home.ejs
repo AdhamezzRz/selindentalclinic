@@ -20,6 +20,13 @@
           <span class="play-ico" aria-hidden="true"></span><span><%= s('hero.film') %></span>
         </button>
       </div>
+      <% if (config.google.ratingValue && config.google.ratingCount) { %>
+      <a class="hero-rating hero-in" href="<%= config.google.businessUrl || '#' %>" target="_blank" rel="noopener">
+        <span class="rating-stars rating-stars--sm" style="--r: <%= (parseFloat(config.google.ratingValue) / 5 * 100).toFixed(0) %>%" aria-hidden="true"></span>
+        <strong><%= config.google.ratingValue %></strong>
+        <span><%= config.google.ratingCount %> <%= s('rev.reviews') %> <%= s('rev.google') %></span>
+      </a>
+      <% } %>
     </div>
 
     <div class="hero-visual">

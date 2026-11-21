@@ -921,3 +921,8 @@ input[type="range"]::-moz-range-progress { height: 2px; background: var(--champa
   .author-box { flex-direction: column; }
 }
 .ba-layer img { pointer-events: none; -webkit-user-drag: none; user-select: none; }
+.hero-rating { display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; font-size: 13px; color: rgba(245, 241, 235, .78); }
+.hero-rating strong { color: var(--champagne); font-weight: 600; font-size: 15px; }
+.hero-rating:hover span:last-child { text-decoration: underline; text-underline-offset: 4px; }
+.field--radios > .field-label { position: static; transform: none; font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--clay); margin-bottom: 12px; }
+[lang="ar"] .field--radios > .field-label { letter-spacing: 0; font-size: 13px; }

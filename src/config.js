@@ -23,35 +23,35 @@ module.exports = {
   contact: {
     // International format, digits only, no "+" (e.g. 201001234567).
     // When set, every "Book" button also offers WhatsApp.
-    whatsapp: env('CONTACT_WHATSAPP', ''),
+    whatsapp: env('CONTACT_WHATSAPP', '201044049901'),
     // Display phone number, e.g. "+20 100 123 4567".
-    phone: env('CONTACT_PHONE', ''),
+    phone: env('CONTACT_PHONE', '+20 10 44049901'),
     email: env('CONTACT_EMAIL', ''),
     address: {
-      en: env('ADDRESS_EN', ''),
-      ar: env('ADDRESS_AR', ''),
+      en: env('ADDRESS_EN', 'Clinic 4, First Floor, Centra B Building, Eterna Healthcare City, Mivida Compound, Extension of South 90th Street, New Cairo 1, Cairo Governorate 11483'),
+      ar: env('ADDRESS_AR', 'عيادة 4، الدور الأول، مبنى سنترا B، إيترنا هيلثكير سيتي، كمبوند ميفيدا، امتداد شارع التسعين الجنوبي، القاهرة الجديدة 1، محافظة القاهرة 11483'),
     },
     // Paste the "src" of a Google Maps embed iframe here to show a live map.
-    mapEmbed: env('MAP_EMBED_URL', ''),
+    mapEmbed: env('MAP_EMBED_URL', 'https://www.google.com/maps?q=Selin+Dental+Aesthetics,+Eterna+Healthcare+City,+Mivida,+New+Cairo&output=embed'),
     // Link that opens directions in Google Maps.
-    mapLink: env('MAP_LINK', ''),
+    mapLink: env('MAP_LINK', 'https://www.google.com/maps/search/?api=1&query=Selin+Dental+Aesthetics+Eterna+Healthcare+City+New+Cairo'),
     hours: {
-      en: env('HOURS_EN', 'By appointment · Saturday – Thursday'),
-      ar: env('HOURS_AR', 'بموعد مسبق · من السبت إلى الخميس'),
+      en: env('HOURS_EN', 'Open 24 hours · by appointment'),
+      ar: env('HOURS_AR', 'مفتوح 24 ساعة · بموعد مسبق'),
     },
   },
 
   // Used in Google structured data (schema.org) — fill in for best local SEO.
   location: {
-    street: env('ADDRESS_STREET', ''),        // e.g. "Building 12, 90th Street"
-    city: env('ADDRESS_CITY', ''),            // e.g. "New Cairo"
-    region: env('ADDRESS_REGION', ''),        // e.g. "Cairo Governorate"
-    postalCode: env('ADDRESS_POSTAL', ''),
+    street: env('ADDRESS_STREET', 'Clinic 4, First Floor, Centra B Building, Eterna Healthcare City, Mivida Compound, Extension of South 90th Street'),        // e.g. "Building 12, 90th Street"
+    city: env('ADDRESS_CITY', 'New Cairo'),            // e.g. "New Cairo"
+    region: env('ADDRESS_REGION', 'Cairo Governorate'),        // e.g. "Cairo Governorate"
+    postalCode: env('ADDRESS_POSTAL', '11483'),
     country: env('ADDRESS_COUNTRY', 'EG'),    // ISO country code
     lat: env('GEO_LAT', ''),                  // e.g. "30.0254"
     lng: env('GEO_LNG', ''),                  // e.g. "31.4913"
     // schema.org opening hours, e.g. "Sa-Th 12:00-22:00"
-    openingHours: env('OPENING_HOURS', ''),
+    openingHours: env('OPENING_HOURS', 'Mo-Su 00:00-23:59'),
     priceRange: env('PRICE_RANGE', '$$$'),
   },
 
@@ -63,10 +63,10 @@ module.exports = {
    * The site then shows a rating badge, and adds it to the structured data.
    */
   google: {
-    businessUrl: env('GOOGLE_BUSINESS_URL', ''),
+    businessUrl: env('GOOGLE_BUSINESS_URL', 'https://www.google.com/maps/search/?api=1&query=Selin+Dental+Aesthetics+Eterna+Healthcare+City+New+Cairo'),
     reviewUrl: env('GOOGLE_REVIEW_URL', ''),
-    ratingValue: env('GOOGLE_RATING', ''),   // e.g. "4.9"
-    ratingCount: env('GOOGLE_RATING_COUNT', ''), // e.g. "127"
+    ratingValue: env('GOOGLE_RATING', '5.0'),   // e.g. "4.9"
+    ratingCount: env('GOOGLE_RATING_COUNT', '82'), // e.g. "127"
     // Google Search Console verification token (meta tag content), optional
     siteVerification: env('GOOGLE_SITE_VERIFICATION', ''),
   },
