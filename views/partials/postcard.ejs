@@ -1,0 +1,10 @@
+<% const au = content.doctors.find(d => d.slug === p.author); %>
+<a class="pcard reveal<%= typeof big !== 'undefined' && big ? ' pcard--big' : '' %>" href="<%= link('/blog/' + p.slug) %>" data-cursor="<%= s('blog.read') %>">
+  <div class="pcard-img"><img src="<%= p.image %>" alt="<%= t(p.title) %>" loading="lazy" decoding="async"></div>
+  <div class="pcard-body">
+    <p class="pcard-meta"><span><%= t(p.category) %></span><span><%= fmtDate(p.date) %></span><span><%= p.readMins %> <%= s('blog.min') %></span></p>
+    <h3 class="display"><%= t(p.title) %></h3>
+    <p class="pcard-ex"><%= t(p.excerpt) %></p>
+    <% if (au) { %><p class="pcard-au"><span class="spark"></span><%= t(au.name) %></p><% } %>
+  </div>
+</a>

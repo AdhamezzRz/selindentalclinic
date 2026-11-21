@@ -1,0 +1,88 @@
+<%- include('partials/head') %>
+
+<section class="thero sec--dark">
+  <canvas class="stars" data-stars data-density=".6" aria-hidden="true"></canvas>
+  <div class="wrap thero-grid">
+    <div class="thero-copy">
+      <%- include('partials/crumbs') %>
+      <p class="eyebrow hero-in"><a href="<%= link('/treatments') %>" class="ulink"><%= s('nav.treatments') %></a> <span class="spark"></span> <%= tr.no %></p>
+      <h1 class="display phero-title split-lines"><%= t(tr.name) %></h1>
+      <p class="thero-kicker hero-in"><em><%= t(tr.kicker) %></em></p>
+      <p class="lede hero-in"><%= t(tr.short) %></p>
+      <div class="row-btns hero-in">
+        <a class="btn btn--gold magnetic" href="<%= link('/book') %>?treatment=<%= tr.slug %>"><span><%= s('nav.book') %></span></a>
+        <% if (waLink()) { %><a class="btn btn--ghost magnetic" href="<%= waLink((lang === 'ar' ? 'مرحبًا سيلين، أود الاستفسار عن ' : 'Hello SÉLIN, I would like to ask about ') + t(tr.name)) %>" target="_blank" rel="noopener"><span><%= s('cta.whatsapp') %></span></a><% } %>
+      </div>
+    </div>
+    <div class="thero-img">
+      <div class="thero-arch" data-parallax><img src="<%= tr.image %>" alt="<%= t(tr.name) %>" decoding="async"></div>
+      <div class="thero-badge"><span><%= s('treat.duration') %></span><strong><%= t(tr.duration) %></strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--pearl">
+  <div class="wrap tdetail">
+    <p class="tdetail-intro display" data-words><%= t(tr.intro) %></p>
+    <div class="tdetail-cols">
+      <div>
+        <p class="eyebrow"><span class="spark"></span><%= s('treat.benefits') %></p>
+        <ul class="ticks">
+          <% tr.benefits.forEach(function (b) { %><li class="reveal"><%= t(b) %></li><% }) %>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow"><span class="spark"></span><%= s('treat.process') %></p>
+        <ol class="steps">
+          <% tr.steps.forEach(function (st, i) { %>
+            <li class="reveal"><%- include('partials/moon', { p: (i + 1) / tr.steps.length }) %><span><%= t(st) %></span></li>
+          <% }) %>
+        </ol>
+      </div>
+    </div>
+    <p class="fine"><span class="spark"></span><%= s('treat.disclaimer') %></p>
+  </div>
+</section>
+
+<% if (related.length) { %>
+<section class="sec sec--twilight cases">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow"><span class="spark"></span><%= s('treat.related') %></p></div>
+    <div class="cases-grid cases-grid--solo">
+      <% related.forEach(function (c) { %><%- include('partials/case', { c }) %><% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<% if (tr.faq && tr.faq.length) { %>
+<section class="faq sec sec--dust">
+  <div class="wrap faq-grid">
+    <div><p class="eyebrow"><span class="spark"></span><%= s('treat.faq') %></p><h2 class="display h2"><%= t(tr.name) %></h2></div>
+    <div class="faq-list">
+      <% tr.faq.forEach(function (f) { %>
+        <details class="faq-item reveal"><summary><span><%= t(f.q) %></span><i aria-hidden="true"></i></summary><div class="faq-a"><p><%= t(f.a) %></p></div></details>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<% if (relatedPosts.length) { %>
+<section class="sec sec--pearl">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow"><span class="spark"></span><%= s('blog.label') %></p><h2 class="display h2"><%= s('blog.home.title') %></h2></div>
+    <div class="blog-grid blog-grid--2">
+      <% relatedPosts.forEach(function (p) { %><%- include('partials/postcard', { p }) %><% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<a class="tnext sec--dark" href="<%= link('/treatments/' + nextTr.slug) %>" data-cursor="<%= s('treat.next') %>">
+  <span class="eyebrow"><span class="spark"></span><%= s('treat.next') %></span>
+  <span class="tnext-name display"><%= t(nextTr.name) %></span>
+  <span class="tnext-img"><img src="<%= nextTr.image %>" alt="" loading="lazy"></span>
+</a>
+
+<%- include('partials/foot') %>

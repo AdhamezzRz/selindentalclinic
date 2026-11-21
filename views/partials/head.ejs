@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="<%= lang %>" dir="<%= dir %>" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title><%= title ? title + ' — ' + (lang === 'ar' ? 'سيلين لتجميل الأسنان' : 'SÉLIN Dental Aesthetics') : s('meta.title') %></title>
+  <meta name="description" content="<%= typeof description !== 'undefined' && description ? description : s('meta.desc') %>">
+  <meta name="theme-color" content="#0F1520">
+  <link rel="canonical" href="<%= canonical %>">
+  <link rel="alternate" hreflang="en" href="<%= hrefEn %>">
+  <link rel="alternate" hreflang="ar" href="<%= hrefAr %>">
+  <link rel="alternate" hreflang="x-default" href="<%= hrefEn %>">
+  <meta name="robots" content="<%= typeof noindex !== 'undefined' && noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' %>">
+  <% if (config.google.siteVerification) { %><meta name="google-site-verification" content="<%= config.google.siteVerification %>"><% } %>
+  <meta name="author" content="SÉLIN Dental Aesthetics">
+  <link rel="alternate" type="text/plain" title="LLM summary" href="/llms.txt">
+  <link rel="icon" href="/img/mark.svg" type="image/svg+xml">
+  <meta property="og:type" content="<%= typeof ogType !== 'undefined' && ogType ? ogType : 'website' %>">
+  <meta property="og:url" content="<%= canonical %>">
+  <meta property="og:locale:alternate" content="<%= lang === 'ar' ? 'en_US' : 'ar_EG' %>">
+  <meta property="og:site_name" content="SÉLIN Dental Aesthetics">
+  <meta property="og:title" content="<%= title || s('meta.title') %>">
+  <meta property="og:description" content="<%= typeof description !== 'undefined' && description ? description : s('meta.desc') %>">
+  <meta property="og:image" content="<%= config.brand.siteUrl.replace(/\/$/, '') %><%= typeof ogImage !== 'undefined' && ogImage ? ogImage : '/media/poster.jpg' %>">
+  <meta property="og:locale" content="<%= lang === 'ar' ? 'ar_EG' : 'en_US' %>">
+  <meta name="twitter:card" content="summary_large_image">
+  <% if (typeof post !== 'undefined' && post) { %><meta property="article:published_time" content="<%= post.date %>"><meta property="article:modified_time" content="<%= post.updated || post.date %>"><% } %>
+  <% if (page === 'home') { %><link rel="preload" as="image" href="/media/poster.jpg" fetchpriority="high"><% } %>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap">
+  <% if (lang === 'ar') { %>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap">
+  <% } %>
+  <link rel="stylesheet" href="/vendor/lenis/lenis.css">
+  <link rel="stylesheet" href="/css/main.css?v=<%= v %>">
+  <script type="application/ld+json"><%- jsonld %></script>
+</head>
+<body class="page-<%= page %>" data-lang="<%= lang %>">
+  <a class="skip" href="#main"><%= lang === 'ar' ? 'تخطَّ إلى المحتوى' : 'Skip to content' %></a>
+
+  <% if (page === 'home') { %>
+  <div class="loader" aria-hidden="true">
+    <div class="loader-moon"><span class="loader-shadow"></span></div>
+    <div class="loader-mark"><%- include('mark') %></div>
+    <div class="loader-meta"><span><%= s('loader.text') %></span><span class="loader-count">0</span></div>
+  </div>
+  <% } %>
+
+  <div class="cursor" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"><span class="cursor-label"></span></span></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav" data-nav>
+    <a class="nav-logo" href="<%= link('/') %>" aria-label="SÉLIN — <%= s('nav.home') %>"><%- include('logo', { small: true }) %></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="<%= link('/treatments') %>" class="<%= page === 'treatments' ? 'is-active' : '' %>"><%= s('nav.treatments') %></a>
+      <a href="<%= link('/cases') %>" class="<%= page === 'cases' ? 'is-active' : '' %>"><%= s('nav.cases') %></a>
+      <a href="<%= link('/doctors') %>" class="<%= page === 'doctors' ? 'is-active' : '' %>"><%= s('nav.doctors') %></a>
+      <a href="<%= link('/clinic') %>" class="<%= page === 'clinic' ? 'is-active' : '' %>"><%= s('nav.clinic') %></a>
+      <a href="<%= link('/blog') %>" class="<%= page === 'blog' ? 'is-active' : '' %>"><%= s('nav.blog') %></a>
+    </nav>
+    <div class="nav-actions">
+      <a class="nav-lang" href="<%= altLink %>" hreflang="<%= lang === 'ar' ? 'en' : 'ar' %>" lang="<%= lang === 'ar' ? 'en' : 'ar' %>"><%= s('nav.lang') %></a>
+      <a class="btn btn--gold btn--sm magnetic" href="<%= link('/book') %>"><span><%= s('nav.book') %></span></a>
+      <button class="nav-burger" type="button" aria-expanded="false" aria-controls="menu" data-menu-toggle>
+        <span class="sr"><%= s('nav.menu') %></span><i></i><i></i>
+      </button>
+    </div>
+  </header>
+
+  <div class="menu" id="menu" aria-hidden="true">
+    <div class="menu-moon" aria-hidden="true"></div>
+    <nav class="menu-links" aria-label="Mobile">
+      <a href="<%= link('/') %>"><small>00</small><%= s('nav.home') %></a>
+      <a href="<%= link('/treatments') %>"><small>01</small><%= s('nav.treatments') %></a>
+      <a href="<%= link('/cases') %>"><small>02</small><%= s('nav.cases') %></a>
+      <a href="<%= link('/doctors') %>"><small>03</small><%= s('nav.doctors') %></a>
+      <a href="<%= link('/clinic') %>"><small>04</small><%= s('nav.clinic') %></a>
+      <a href="<%= link('/blog') %>"><small>05</small><%= s('nav.blog') %></a>
+      <a href="<%= link('/book') %>"><small>06</small><%= s('nav.book') %></a>
+    </nav>
+    <div class="menu-foot">
+      <a href="<%= altLink %>"><%= s('nav.lang') %></a>
+      <% if (config.social.instagram) { %><a href="<%= config.social.instagram %>" target="_blank" rel="noopener">Instagram</a><% } %>
+      <% if (waLink()) { %><a href="<%= waLink(s('book.wa.msg')) %>" target="_blank" rel="noopener">WhatsApp</a><% } %>
+    </div>
+  </div>
+
+  <main id="main">

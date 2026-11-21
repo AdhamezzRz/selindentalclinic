@@ -1,0 +1,26 @@
+<section class="shade sec sec--pearl" id="shade">
+  <div class="wrap shade-grid">
+    <div class="shade-copy">
+      <p class="eyebrow"><span class="spark"></span><%= s('shade.label') %></p>
+      <h2 class="display h2 split"><%= s('shade.title') %></h2>
+      <p class="lede reveal"><%= s('shade.sub') %></p>
+      <div class="shade-readout reveal">
+        <span class="shade-k"><%= s('shade.current') %></span>
+        <span class="shade-v" data-shade-code>A3</span>
+        <span class="shade-d" data-shade-desc><%= s('shade.d.0') %></span>
+      </div>
+      <p class="fine reveal"><%= s('shade.note') %></p>
+    </div>
+    <div class="shade-stage reveal" data-shade
+         data-desc="<%= JSON.stringify([0,1,2,3,4].map(i => s('shade.d.' + i))) %>">
+      <div class="shade-glow" aria-hidden="true"></div>
+      <div class="shade-smile" data-shade-smile dir="ltr"></div>
+      <div class="shade-control" dir="ltr">
+        <span><%= s('shade.natural') %></span>
+        <input type="range" min="0" max="8" step="1" value="0" data-shade-range aria-label="<%= s('shade.label') %>">
+        <span><%= s('shade.luminous') %></span>
+      </div>
+      <div class="shade-chips" data-shade-chips dir="ltr" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>

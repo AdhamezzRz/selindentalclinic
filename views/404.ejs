@@ -1,0 +1,11 @@
+<%- include('partials/head') %>
+<section class="nf sec--dark">
+  <canvas class="stars" data-stars data-density="1.4" aria-hidden="true"></canvas>
+  <div class="nf-inner wrap">
+    <p class="nf-code display">4<span class="nf-moon" aria-hidden="true"></span>4</p>
+    <h1 class="display h2"><%= s('nf.title') %></h1>
+    <p class="lede"><%= s('nf.sub') %></p>
+    <a class="btn btn--gold magnetic" href="<%= link('/') %>"><span><%= s('nf.home') %></span></a>
+  </div>
+</section>
+<%- include('partials/foot') %>

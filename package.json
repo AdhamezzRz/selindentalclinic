@@ -1,0 +1,23 @@
+{
+  "name": "selin-dental-aesthetics",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SELIN Dental Aesthetics — official website (Node.js / Express).",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "gsap": "3.12.5",
+    "helmet": "^8.0.0",
+    "lenis": "1.1.13",
+    "nodemailer": "^6.9.16"
+  }
+}

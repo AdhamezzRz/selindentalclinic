@@ -1,0 +1,22 @@
+<%- include('partials/head') %>
+<%- include('partials/pagehero', { label: s('treat.label'), heading: s('treat.title'), sub: s('treatments.page.sub') }) %>
+
+<section class="sec sec--pearl">
+  <div class="wrap tgrid">
+    <% content.treatments.forEach(function (tr, i) { %>
+      <a class="tcard reveal<%= i % 3 === 1 ? ' tcard--arch' : '' %>" href="<%= link('/treatments/' + tr.slug) %>" data-cursor="<%= s('treat.more') %>">
+        <div class="tcard-img"><img src="<%= tr.image %>" alt="<%= t(tr.name) %>" loading="lazy" decoding="async"></div>
+        <div class="tcard-body">
+          <span class="treat-no"><%= tr.no %> — <%= t(tr.kicker) %></span>
+          <h2 class="display"><%= t(tr.name) %></h2>
+          <p><%= t(tr.short) %></p>
+          <span class="tcard-more"><%= s('treat.more') %> <span class="treat-arrow">→</span></span>
+        </div>
+      </a>
+    <% }) %>
+  </div>
+</section>
+
+<%- include('partials/shade') %>
+<%- include('partials/cta') %>
+<%- include('partials/foot') %>

@@ -1,0 +1,35 @@
+<% const g = config.google; const hasRating = g.ratingValue && g.ratingCount; %>
+<% if (hasRating || content.reviews.length || g.reviewUrl) { %>
+<section class="reviews sec sec--pearl">
+  <div class="wrap">
+    <div class="sec-head sec-head--split">
+      <div>
+        <p class="eyebrow"><span class="spark"></span><%= s('rev.label') %></p>
+        <h2 class="display h2 split"><%= s('rev.title') %></h2>
+      </div>
+      <% if (hasRating) { %>
+      <a class="rating reveal" href="<%= g.businessUrl || g.reviewUrl || '#' %>" target="_blank" rel="noopener">
+        <span class="rating-v display"><%= g.ratingValue %></span>
+        <span class="rating-stars" style="--r: <%= (parseFloat(g.ratingValue) / 5 * 100).toFixed(0) %>%" aria-label="<%= g.ratingValue %> / 5"></span>
+        <span class="rating-c"><%= g.ratingCount %> <%= s('rev.reviews') %> <%= s('rev.google') %></span>
+      </a>
+      <% } %>
+    </div>
+    <% if (content.reviews.length) { %>
+    <div class="rev-grid">
+      <% content.reviews.slice(0, 6).forEach(function (r) { %>
+        <figure class="rev reveal">
+          <span class="rating-stars rating-stars--sm" style="--r: <%= (r.rating / 5 * 100).toFixed(0) %>%" aria-label="<%= r.rating %> / 5"></span>
+          <blockquote>“<%= t(r.text) %>”</blockquote>
+          <figcaption><strong><%= r.name %></strong><% if (r.source) { %> · <%= r.source %><% } %></figcaption>
+        </figure>
+      <% }) %>
+    </div>
+    <% } %>
+    <div class="row-btns rev-btns">
+      <% if (g.businessUrl) { %><a class="btn btn--dark magnetic" href="<%= g.businessUrl %>" target="_blank" rel="noopener"><span><%= s('rev.see') %></span></a><% } %>
+      <% if (g.reviewUrl) { %><a class="btn btn--ghost magnetic" href="<%= g.reviewUrl %>" target="_blank" rel="noopener"><span><%= s('rev.write') %> ★</span></a><% } %>
+    </div>
+  </div>
+</section>
+<% } %>

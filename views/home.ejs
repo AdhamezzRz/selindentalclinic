@@ -1,0 +1,241 @@
+<%- include('partials/head') %>
+
+<!-- ═════════════ HERO ═════════════ -->
+<section class="hero sec--dark" data-hero>
+  <canvas class="stars" data-stars data-density="1.2" aria-hidden="true"></canvas>
+  <div class="hero-moon" aria-hidden="true"><span class="hero-moon-core"></span></div>
+
+  <div class="hero-grid wrap">
+    <div class="hero-copy">
+      <p class="eyebrow hero-in"><span class="spark"></span><%= s('hero.eyebrow') %></p>
+      <h1 class="hero-title display">
+        <span class="line"><span class="line-in"><%= s('hero.l1') %></span></span>
+        <span class="line"><span class="line-in"><em><%= s('hero.l2') %></em></span></span>
+        <span class="line"><span class="line-in"><%= s('hero.l3') %></span></span>
+      </h1>
+      <p class="hero-sub hero-in"><%= s('hero.sub') %></p>
+      <div class="row-btns hero-in">
+        <a class="btn btn--gold magnetic" href="<%= link('/book') %>"><span><%= s('hero.cta') %></span></a>
+        <button class="btn btn--play magnetic" type="button" data-lightbox-open>
+          <span class="play-ico" aria-hidden="true"></span><span><%= s('hero.film') %></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-arch" data-cursor="<%= s('film.play') %>" data-lightbox-open role="button" tabindex="0" aria-label="<%= s('hero.film') %>">
+        <video class="hero-video" src="/media/selin-promo-720.mp4" poster="/media/poster.jpg" muted loop playsinline autoplay preload="metadata"></video>
+        <span class="hero-arch-shine" aria-hidden="true"></span>
+      </div>
+      <svg class="hero-orbit" viewBox="0 0 200 200" aria-hidden="true">
+        <defs><path id="orbitPath" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs>
+        <text><textPath href="#orbitPath">SÉLIN · DENTAL AESTHETICS · THE ART OF THE SMILE · </textPath></text>
+      </svg>
+      <span class="hero-tag hero-tag--1"><span class="spark"></span>Clinic 1</span>
+      <span class="hero-tag hero-tag--2"><span class="spark"></span>Clinic 2</span>
+    </div>
+  </div>
+
+  <div class="hero-foot wrap">
+    <span class="scroll-cue"><i></i><%= s('hero.scroll') %></span>
+    <span class="hero-docs"><%= content.doctors.map(d => t(d.name)).join('  ·  ') %></span>
+  </div>
+</section>
+
+<!-- ═════════════ MARQUEE ═════════════ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <% for (let k = 0; k < 2; k++) { %>
+      <div class="marquee-group">
+        <% s('marquee').forEach(function (m) { %><span><%= m %></span><svg class="marquee-star" viewBox="-1 -1 2 2"><path d="M0 -1 C.1 -.1 .1 -.1 1 0 C.1 .1 .1 .1 0 1 C-.1 .1 -.1 .1 -1 0 C-.1 -.1 -.1 -.1 0 -1Z"/></svg><% }) %>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<!-- ═════════════ MANIFESTO ═════════════ -->
+<section class="manifesto sec sec--pearl">
+  <div class="wrap">
+    <p class="eyebrow"><span class="spark"></span><%= s('manifesto.label') %></p>
+    <p class="manifesto-text display" data-words><%= s('manifesto.text') %></p>
+    <div class="pillars">
+      <% [1,2,3].forEach(function (i) { %>
+        <div class="pillar reveal">
+          <%- include('partials/moon', { p: i / 3 }) %>
+          <h3><%= s('pillar.' + i + '.t') %></h3>
+          <p><%= s('pillar.' + i + '.d') %></p>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ FILM (arch → full-bleed) ═════════════ -->
+<section class="film sec--dark" data-film>
+  <div class="film-sticky">
+    <div class="film-mask" data-film-mask>
+      <video class="film-video" src="/media/selin-promo-720.mp4" poster="/media/poster.jpg" muted loop playsinline preload="none" data-autoplay-visible></video>
+      <div class="film-veil"></div>
+    </div>
+    <div class="film-copy wrap">
+      <p class="eyebrow"><span class="spark"></span><%= s('film.label') %></p>
+      <h2 class="display film-title"><%= s('film.title') %></h2>
+      <p class="film-sub"><%= s('film.sub') %></p>
+      <button class="btn btn--gold magnetic" type="button" data-lightbox-open><span class="play-ico" aria-hidden="true"></span><span><%= s('film.play') %></span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ TREATMENTS ═════════════ -->
+<section class="treat sec sec--dust" data-treat>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow"><span class="spark"></span><%= s('treat.label') %></p>
+      <h2 class="display h2 split"><%= s('treat.title') %></h2>
+    </div>
+    <ul class="treat-list">
+      <% content.treatments.forEach(function (tr) { %>
+        <li class="treat-row reveal">
+          <a href="<%= link('/treatments/' + tr.slug) %>" data-img="<%= tr.image %>" data-cursor="<%= s('treat.more') %>">
+            <span class="treat-no"><%= tr.no %></span>
+            <span class="treat-name display"><%= t(tr.name) %></span>
+            <span class="treat-kicker"><%= t(tr.kicker) %></span>
+            <span class="treat-thumb"><img src="<%= tr.image %>" alt="" loading="lazy" decoding="async"></span>
+            <span class="treat-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      <% }) %>
+    </ul>
+    <div class="sec-foot"><a class="btn btn--dark magnetic" href="<%= link('/treatments') %>"><span><%= s('treat.all') %></span></a></div>
+  </div>
+  <div class="treat-float" aria-hidden="true"><img alt=""></div>
+</section>
+
+<!-- ═════════════ CASES ═════════════ -->
+<section class="cases sec sec--twilight" id="cases">
+  <canvas class="stars" data-stars data-density=".5" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="sec-head sec-head--split">
+      <div>
+        <p class="eyebrow"><span class="spark"></span><%= s('cases.label') %></p>
+        <h2 class="display h2 split"><%= s('cases.title') %></h2>
+      </div>
+      <div class="rail-side">
+        <p class="lede reveal"><%= s('cases.sub') %></p>
+        <div class="rail-nav">
+          <button type="button" class="rail-btn" data-rail-prev aria-label="Previous"><span>←</span></button>
+          <button type="button" class="rail-btn" data-rail-next aria-label="Next"><span>→</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="cases-rail" data-rail>
+      <% content.cases.forEach(function (c) { %><%- include('partials/case', { c }) %><% }) %>
+    </div>
+    <div class="cases-foot">
+      <% if (content.cases.some(c => c.sim && !(c.before && c.after))) { %><p class="fine"><span class="spark"></span><%= s('cases.simNote') %></p><% } %>
+      <div class="row-btns">
+        <a class="btn btn--gold magnetic" href="<%= link('/cases') %>"><span><%= s('cases.all') %></span></a>
+        <% if (config.social.instagram) { %><a class="btn btn--ghost magnetic" href="<%= config.social.instagram %>" target="_blank" rel="noopener"><span><%= s('cases.more') %></span></a><% } %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ SHADE STUDIO ═════════════ -->
+<%- include('partials/shade') %>
+
+<!-- ═════════════ DOCTORS ═════════════ -->
+<section class="docs sec sec--dark">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow"><span class="spark"></span><%= s('docs.label') %></p>
+      <h2 class="display h2 split"><%= s('docs.title') %></h2>
+    </div>
+    <div class="docs-grid">
+      <% content.doctors.forEach(function (d) { %><%- include('partials/doctor', { d, full: false }) %><% }) %>
+    </div>
+    <div class="sec-foot"><a class="btn btn--ghost magnetic" href="<%= link('/doctors') %>"><span><%= s('docs.meet') %></span></a></div>
+  </div>
+</section>
+
+<!-- ═════════════ CLINIC TOUR (horizontal) ═════════════ -->
+<section class="tour sec--dark" data-tour>
+  <div class="tour-pin">
+    <div class="tour-head wrap">
+      <p class="eyebrow"><span class="spark"></span><%= s('tour.label') %></p>
+      <h2 class="display h2"><%= s('tour.title') %></h2>
+      <p class="lede"><%= s('tour.sub') %></p>
+    </div>
+    <div class="tour-track" data-tour-track>
+      <% content.tour.forEach(function (f, i) { %>
+        <figure class="tour-card<%= i % 3 === 1 ? ' tour-card--arch' : '' %>">
+          <div class="tour-img"><img src="<%= f.src %>" alt="SÉLIN — <%= t(f.label) %>" loading="lazy" decoding="async"></div>
+          <figcaption><span><%= String(i + 1).padStart(2, '0') %></span><%= t(f.label) %></figcaption>
+        </figure>
+      <% }) %>
+      <a class="tour-card tour-card--end" href="<%= link('/clinic') %>">
+        <span class="display"><%= s('tour.cta') %></span><span class="treat-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ JOURNEY ═════════════ -->
+<section class="journey sec sec--pearl">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow"><span class="spark"></span><%= s('journey.label') %></p>
+      <h2 class="display h2 split"><%= s('journey.title') %></h2>
+    </div>
+    <ol class="journey-list">
+      <% content.journey.forEach(function (j, i) { %>
+        <li class="journey-step reveal">
+          <%- include('partials/moon', { p: (i + 1) / 4 }) %>
+          <span class="journey-no"><%= j.no %></span>
+          <h3 class="display"><%= t(j.title) %></h3>
+          <p><%= t(j.text) %></p>
+        </li>
+      <% }) %>
+    </ol>
+  </div>
+</section>
+
+<!-- ═════════════ REVIEWS ═════════════ -->
+<%- include('partials/reviews') %>
+
+<!-- ═════════════ JOURNAL ═════════════ -->
+<section class="sec sec--dust journal">
+  <div class="wrap">
+    <div class="sec-head sec-head--split">
+      <div>
+        <p class="eyebrow"><span class="spark"></span><%= s('blog.home.label') %></p>
+        <h2 class="display h2 split"><%= s('blog.home.title') %></h2>
+      </div>
+      <a class="btn btn--dark magnetic" href="<%= link('/blog') %>"><span><%= s('blog.all') %></span></a>
+    </div>
+    <div class="blog-grid">
+      <% posts.slice(0, 3).forEach(function (p) { %><%- include('partials/postcard', { p }) %><% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ FAQ ═════════════ -->
+<section class="faq sec sec--pearl">
+  <div class="wrap faq-grid">
+    <div>
+      <p class="eyebrow"><span class="spark"></span><%= s('faq.label') %></p>
+      <h2 class="display h2 split"><%= s('faq.title') %></h2>
+    </div>
+    <div class="faq-list">
+      <% content.faq.forEach(function (f) { %>
+        <details class="faq-item reveal">
+          <summary><span><%= t(f.q) %></span><i aria-hidden="true"></i></summary>
+          <div class="faq-a"><p><%= t(f.a) %></p></div>
+        </details>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/cta') %>
+<%- include('partials/foot') %>

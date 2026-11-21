@@ -1,0 +1,6 @@
+<% const id = 'm' + Math.random().toString(36).slice(2, 8); const off = 6 + 40 * p; %>
+<svg class="moon-ico" viewBox="0 0 48 48" aria-hidden="true">
+  <defs><mask id="<%= id %>"><rect width="48" height="48" fill="#fff"/><circle cx="<%= 24 - off %>" cy="24" r="20" fill="#000"/></mask></defs>
+  <circle cx="24" cy="24" r="20" class="moon-ico-ring"/>
+  <circle cx="24" cy="24" r="20" class="moon-ico-lit" mask="url(#<%= id %>)"/>
+</svg>

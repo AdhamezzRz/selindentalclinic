@@ -1,0 +1,86 @@
+<%- include('partials/head') %>
+
+<section class="book sec--dark">
+  <canvas class="stars" data-stars data-density=".8" aria-hidden="true"></canvas>
+  <div class="wrap book-grid">
+    <div class="book-copy">
+      <%- include('partials/crumbs') %>
+      <p class="eyebrow hero-in"><span class="spark"></span><%= s('book.label') %></p>
+      <h1 class="display phero-title split-lines"><%= s('book.title') %></h1>
+      <p class="lede hero-in"><%= s('book.sub') %></p>
+
+      <div class="book-info hero-in">
+        <% if (t(config.contact.address)) { %><div><h3><%= s('info.visit') %></h3><p><%= t(config.contact.address) %></p><% if (config.contact.mapLink) { %><a class="ulink" href="<%= config.contact.mapLink %>" target="_blank" rel="noopener"><%= s('info.directions') %></a><% } %></div><% } %>
+        <div><h3><%= s('info.hours') %></h3><p><%= t(config.contact.hours) %></p></div>
+        <% if (config.contact.phone || config.contact.email) { %><div><h3><%= s('info.contact') %></h3>
+          <% if (config.contact.phone) { %><p><a class="ulink" dir="ltr" href="tel:<%= config.contact.phone.replace(/\s/g, '') %>"><%= config.contact.phone %></a></p><% } %>
+          <% if (config.contact.email) { %><p><a class="ulink" href="mailto:<%= config.contact.email %>"><%= config.contact.email %></a></p><% } %>
+        </div><% } %>
+        <% if (waLink() || config.social.instagram) { %><div><h3><%= s('book.or') %></h3>
+          <div class="row-btns">
+            <% if (waLink()) { %><a class="btn btn--ghost btn--sm" href="<%= waLink(s('book.wa.msg')) %>" target="_blank" rel="noopener"><span>WhatsApp</span></a><% } %>
+            <% if (config.social.instagram) { %><a class="btn btn--ghost btn--sm" href="<%= config.social.instagram %>" target="_blank" rel="noopener"><span>Instagram</span></a><% } %>
+          </div>
+        </div><% } %>
+      </div>
+    </div>
+
+    <form class="bform hero-in" data-book novalidate
+          data-msg-sending="<%= s('book.sending') %>" data-msg-err="<%= s('book.err') %>" data-msg-server="<%= s('book.err.server') %>">
+      <input type="hidden" name="lang" value="<%= lang %>">
+      <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+      <fieldset>
+        <legend><span class="bform-no">01</span><%= s('book.step1') %></legend>
+        <div class="chips">
+          <% ['color','shape','gaps','crooked','missing','chipped','checkup','full'].forEach(function (k) { %>
+            <label class="chip"><input type="checkbox" name="concerns" value="<%= s('book.c.' + k) %>"><span><%= s('book.c.' + k) %></span></label>
+          <% }) %>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend><span class="bform-no">02</span><%= s('book.step2') %></legend>
+        <div class="fields">
+          <label class="field"><input name="name" required autocomplete="name" placeholder=" "><span><%= s('book.name') %></span></label>
+          <label class="field"><input name="phone" required type="tel" autocomplete="tel" inputmode="tel" placeholder=" " dir="ltr"><span><%= s('book.phone') %></span></label>
+          <label class="field"><input name="email" type="email" autocomplete="email" placeholder=" " dir="ltr"><span><%= s('book.email') %></span></label>
+          <label class="field field--select"><select name="treatment" data-preselect>
+            <option value=""><%= s('book.notsure') %></option>
+            <% content.treatments.forEach(function (tr) { %><option value="<%= tr.slug %>"><%= t(tr.name) %></option><% }) %>
+          </select><span><%= s('book.treatment') %></span></label>
+          <div class="field field--radios">
+            <span class="field-label"><%= s('book.preferred') %></span>
+            <div class="chips chips--sm">
+              <% ['morning','afternoon','evening'].forEach(function (k) { %>
+                <label class="chip"><input type="radio" name="preferred" value="<%= k %>"><span><%= s('book.p.' + k) %></span></label>
+              <% }) %>
+            </div>
+          </div>
+          <label class="field field--wide"><textarea name="message" rows="3" placeholder=" "></textarea><span><%= s('book.message') %></span></label>
+        </div>
+      </fieldset>
+
+      <div class="bform-foot">
+        <button class="btn btn--gold btn--lg magnetic" type="submit"><span data-label><%= s('book.send') %></span></button>
+        <p class="fine"><%= s('book.privacy') %></p>
+      </div>
+      <p class="bform-status" role="status" aria-live="polite"></p>
+
+      <div class="bform-ok" hidden>
+        <div class="bform-ok-moon" aria-hidden="true"><%- include('partials/mark') %></div>
+        <h2 class="display"><%= s('book.ok.t') %></h2>
+        <p><%= s('book.ok.d') %></p>
+        <% if (waLink()) { %><a class="btn btn--ghost" href="<%= waLink(s('book.wa.msg')) %>" target="_blank" rel="noopener"><span><%= s('cta.whatsapp') %></span></a><% } %>
+      </div>
+    </form>
+  </div>
+</section>
+
+<% if (config.contact.mapEmbed) { %>
+<section class="map">
+  <iframe src="<%= config.contact.mapEmbed %>" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map"></iframe>
+</section>
+<% } %>
+
+<%- include('partials/foot') %>

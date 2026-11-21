@@ -1,0 +1,16 @@
+<%- include('partials/head') %>
+<%- include('partials/pagehero', { label: s('blog.label'), heading: s('blog.title'), sub: s('blog.sub') }) %>
+
+<section class="sec sec--pearl blog">
+  <div class="wrap">
+    <% if (posts.length) { %>
+      <div class="blog-feature"><%- include('partials/postcard', { p: posts[0], big: true }) %></div>
+      <div class="blog-grid">
+        <% posts.slice(1).forEach(function (p) { %><%- include('partials/postcard', { p }) %><% }) %>
+      </div>
+    <% } %>
+  </div>
+</section>
+
+<%- include('partials/cta') %>
+<%- include('partials/foot') %>

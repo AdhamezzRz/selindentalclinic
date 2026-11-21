@@ -1,0 +1,14 @@
+<section class="cta sec sec--dark" data-cta>
+  <div class="cta-moon" aria-hidden="true"><span></span></div>
+  <canvas class="stars" data-stars aria-hidden="true"></canvas>
+  <div class="wrap cta-inner">
+    <p class="eyebrow"><span class="spark"></span><%= s('book.label') %></p>
+    <h2 class="display cta-title split"><%= s('cta.title') %></h2>
+    <p class="lede"><%= s('cta.sub') %></p>
+    <div class="row-btns">
+      <a class="btn btn--gold magnetic" href="<%= link('/book') %>"><span><%= s('nav.book') %></span></a>
+      <% if (waLink()) { %><a class="btn btn--ghost magnetic" href="<%= waLink(s('book.wa.msg')) %>" target="_blank" rel="noopener"><span><%= s('cta.whatsapp') %></span></a><% } %>
+      <% if (config.social.instagram) { %><a class="btn btn--ghost magnetic" href="<%= config.social.instagram %>" target="_blank" rel="noopener"><span><%= s('cta.instagram') %></span></a><% } %>
+    </div>
+  </div>
+</section>

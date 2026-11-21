@@ -1,0 +1,20 @@
+<%- include('partials/head') %>
+<%- include('partials/pagehero', { label: s('docs.label'), heading: s('docs.title'), sub: s('doctors.page.sub') }) %>
+
+<section class="docs sec sec--dark docs--page">
+  <div class="wrap">
+    <% content.doctors.forEach(function (d, i) { %>
+      <div class="docs-row<%= i % 2 ? ' docs-row--flip' : '' %>"><%- include('partials/doctor', { d, full: true }) %></div>
+    <% }) %>
+  </div>
+</section>
+
+<section class="sec sec--pearl manifesto">
+  <div class="wrap">
+    <p class="eyebrow"><span class="spark"></span><%= s('manifesto.label') %></p>
+    <p class="manifesto-text display" data-words><%= s('manifesto.text') %></p>
+  </div>
+</section>
+
+<%- include('partials/cta') %>
+<%- include('partials/foot') %>
