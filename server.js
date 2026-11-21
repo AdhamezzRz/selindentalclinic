@@ -147,7 +147,7 @@ router.get('/treatments/:slug', (req, res, next) => {
     page: 'treatments', kind: 'treatment',
     tr,
     nextTr: content.treatments[(idx + 1) % content.treatments.length],
-    related: content.cases.filter((c) => c.treatment === tr.slug),
+    related: content.cases.filter((c) => c.treatment === tr.slug).slice(0, 4),
     relatedPosts: posts.filter((p) => p.treatment === tr.slug).slice(0, 2),
     title: L.t(tr.name), description: L.t(tr.short), ogImage: tr.image,
     crumbs: crumb(L, { name: L.s('nav.treatments'), url: L.link('/treatments') }, { name: L.t(tr.name), url: L.link('/treatments/' + tr.slug) }),
@@ -158,7 +158,7 @@ router.get('/treatments/:slug', (req, res, next) => {
 router.get('/cases', (req, res) => {
   const L = res.locals.L;
   render(res, 'cases', {
-    ...L, page: 'cases', title: L.s('nav.cases'), description: L.s('cases.sub'),
+    ...L, page: 'cases', title: L.s('nav.cases'), description: L.s('cases.sub'), ogImage: content.cases[0] && content.cases[0].after,
     crumbs: crumb(L, { name: L.s('nav.cases'), url: L.link('/cases') }),
   });
 });
@@ -269,7 +269,7 @@ app.get('/sitemap.xml', (req, res) => {
     { p: '/', pr: '1.0', img: ['/media/poster.jpg'] },
     { p: '/treatments', pr: '0.9' },
     ...content.treatments.map((t) => ({ p: `/treatments/${t.slug}`, pr: '0.9', img: [t.image] })),
-    { p: '/cases', pr: '0.8' },
+    { p: '/cases', pr: '0.8', img: content.cases.flatMap((c) => [c.before, c.after]).filter(Boolean) },
     { p: '/doctors', pr: '0.8' },
     { p: '/clinic', pr: '0.7', img: content.tour.map((x) => x.src) },
     { p: '/book', pr: '0.8' },

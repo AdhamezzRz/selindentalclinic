@@ -107,11 +107,17 @@ const ui = {
 
   'cases.label': { en: 'Cases', ar: 'الحالات' },
   'cases.title': { en: 'Before. After. Ever after.', ar: 'قبل. بعد. وإلى الأبد.' },
-  'cases.sub': { en: 'Drag the moon to reveal the transformation.', ar: 'اسحب القمر لتكشف التحول.' },
+  'cases.sub': { en: 'Real smiles from our chairs. Drag the moon to reveal each transformation.', ar: 'ابتسامات حقيقية من عيادتنا. اسحب القمر لتكشف كل تحول.' },
   'cases.before': { en: 'Before', ar: 'قبل' },
   'cases.after': { en: 'After', ar: 'بعد' },
   'cases.all': { en: 'View all cases', ar: 'شاهد كل الحالات' },
   'cases.filter.all': { en: 'All', ar: 'الكل' },
+  'cases.filter.smile': { en: 'Smile view', ar: 'صورة الابتسامة' },
+  'cases.filter.closeup': { en: 'Close-up view', ar: 'صورة مقربة' },
+  'cases.realNote': {
+    en: 'Real SÉLIN patients, photographed in our clinic. Individual results vary.',
+    ar: 'مرضى حقيقيون في سيلين، تم تصويرهم في عيادتنا. تختلف النتائج من شخص لآخر.',
+  },
   'cases.sim': { en: 'Illustrative simulation', ar: 'محاكاة توضيحية' },
   'cases.simNote': {
     en: 'Illustrations show what each treatment can address. Real patient cases are published with consent.',

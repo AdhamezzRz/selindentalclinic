@@ -5,15 +5,14 @@
   <div class="wrap">
     <div class="filters" role="tablist" data-filters>
       <button type="button" class="chip is-on" data-filter="all"><%= s('cases.filter.all') %></button>
-      <% content.treatments.filter(tr => content.cases.some(c => c.treatment === tr.slug)).forEach(function (tr) { %>
-        <button type="button" class="chip" data-filter="<%= tr.slug %>"><%= t(tr.name) %></button>
-      <% }) %>
+      <button type="button" class="chip" data-filter="smile"><%= s('cases.filter.smile') %></button>
+      <button type="button" class="chip" data-filter="retracted"><%= s('cases.filter.closeup') %></button>
     </div>
     <div class="cases-grid" data-cases-grid>
       <% content.cases.forEach(function (c) { %><%- include('partials/case', { c }) %><% }) %>
     </div>
     <div class="cases-foot">
-      <% if (content.cases.some(c => c.sim && !(c.before && c.after))) { %><p class="fine"><span class="spark"></span><%= s('cases.simNote') %></p><% } %>
+      <p class="fine"><span class="spark"></span><%= content.cases.some(c => c.sim && !(c.before && c.after)) ? s('cases.simNote') : s('cases.realNote') %></p>
       <% if (config.social.instagram) { %><a class="btn btn--ghost magnetic" href="<%= config.social.instagram %>" target="_blank" rel="noopener"><span><%= s('cases.more') %></span></a><% } %>
     </div>
   </div>

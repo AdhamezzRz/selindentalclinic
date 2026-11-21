@@ -132,7 +132,7 @@
       <% content.cases.forEach(function (c) { %><%- include('partials/case', { c }) %><% }) %>
     </div>
     <div class="cases-foot">
-      <% if (content.cases.some(c => c.sim && !(c.before && c.after))) { %><p class="fine"><span class="spark"></span><%= s('cases.simNote') %></p><% } %>
+      <p class="fine"><span class="spark"></span><%= content.cases.some(c => c.sim && !(c.before && c.after)) ? s('cases.simNote') : s('cases.realNote') %></p>
       <div class="row-btns">
         <a class="btn btn--gold magnetic" href="<%= link('/cases') %>"><span><%= s('cases.all') %></span></a>
         <% if (config.social.instagram) { %><a class="btn btn--ghost magnetic" href="<%= config.social.instagram %>" target="_blank" rel="noopener"><span><%= s('cases.more') %></span></a><% } %>

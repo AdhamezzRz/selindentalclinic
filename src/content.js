@@ -350,83 +350,57 @@ const treatments = [
 ];
 
 /**
- * CASES — before / after.
+ * CASES — real SÉLIN patient results (before / after).
+ * Photos: public/media/cases/case-XX-before.jpg / case-XX-after.jpg
+ * (1600×1200, cropped to the smile only — no names, no eyes).
  *
- * To publish a real case:
- *   1. Put two photos in public/media/cases/ (same size & framing), e.g.
- *      case-01-before.jpg and case-01-after.jpg
- *   2. Add an entry with `before` and `after` paths (and remove `sim`).
- *
- * Entries with `sim` are rendered as ILLUSTRATIVE simulations (clearly
- * labelled on the site) until real patient photos are added.
+ * To add a case: drop two aligned photos in public/media/cases/ and copy an
+ * entry below. `view` is 'smile' (natural smile) or 'retracted' (close-up).
  */
+const VIEW = {
+  smile: { en: 'Smile view', ar: 'صورة الابتسامة' },
+  retracted: { en: 'Close-up view', ar: 'صورة مقربة' },
+};
+const c = (n, patient, view, title, note, treatment = 'porcelain-veneers') => ({
+  id: `case-${n}`,
+  patient,
+  view,
+  viewLabel: VIEW[view],
+  treatment,
+  title,
+  note,
+  before: `/media/cases/case-${n}-before.jpg`,
+  after: `/media/cases/case-${n}-after.jpg`,
+});
+
 const cases = [
-  {
-    id: 'veneers-01',
-    treatment: 'porcelain-veneers',
-    title: { en: 'Full veneer smile makeover', ar: 'تجميل كامل للابتسامة بالفينير' },
-    note: { en: '10 upper porcelain veneers', ar: '10 وحدات فينير للفك العلوي' },
-    visits: { en: '3 visits', ar: '3 زيارات' },
-    sim: {
-      before: { shade: 'A3.5', chips: [1, 4], uneven: 0.6, gaps: [0, 0, 0, 0, 2, 0, 0, 0, 0] },
-      after: { shade: 'BL2', chips: [], uneven: 0, gaps: [] },
-    },
-  },
-  {
-    id: 'whitening-01',
-    treatment: 'teeth-whitening',
-    title: { en: 'In-clinic whitening', ar: 'تبييض داخل العيادة' },
-    note: { en: 'Single session', ar: 'جلسة واحدة' },
-    visits: { en: '1 visit', ar: 'زيارة واحدة' },
-    sim: {
-      before: { shade: 'A4', chips: [], uneven: 0.1, gaps: [] },
-      after: { shade: 'B1', chips: [], uneven: 0.1, gaps: [] },
-    },
-  },
-  {
-    id: 'aligners-01',
-    treatment: 'clear-aligners',
-    title: { en: 'Crowding corrected with aligners', ar: 'علاج التزاحم بالتقويم الشفاف' },
-    note: { en: 'Upper & lower aligners', ar: 'تقويم شفاف للفكين' },
-    visits: { en: '9 months', ar: '9 أشهر' },
-    sim: {
-      before: { shade: 'A2', chips: [], uneven: 0.2, crowd: 1, gaps: [] },
-      after: { shade: 'A1', chips: [], uneven: 0, gaps: [] },
-    },
-  },
-  {
-    id: 'implant-01',
-    treatment: 'dental-implants',
-    title: { en: 'Missing tooth restored', ar: 'تعويض سن مفقود' },
-    note: { en: 'Single implant + zirconia crown', ar: 'زرعة واحدة مع تاج زركونيا' },
-    visits: { en: '4 months', ar: '4 أشهر' },
-    sim: {
-      before: { shade: 'A2', chips: [], uneven: 0.15, missing: [6], gaps: [] },
-      after: { shade: 'A2', chips: [], uneven: 0.15, gaps: [] },
-    },
-  },
-  {
-    id: 'ortho-01',
-    treatment: 'orthodontics',
-    title: { en: 'Front gap closed', ar: 'إغلاق الفراغ الأمامي' },
-    note: { en: 'Ceramic braces', ar: 'تقويم خزفي' },
-    visits: { en: '12 months', ar: '12 شهرًا' },
-    sim: {
-      before: { shade: 'A2', chips: [], uneven: 0.1, gaps: [0, 0, 0, 0, 7, 0, 0, 0, 0] },
-      after: { shade: 'A1', chips: [], uneven: 0, gaps: [] },
-    },
-  },
-  {
-    id: 'crowns-01',
-    treatment: 'zirconia-crowns',
-    title: { en: 'Dark front tooth matched', ar: 'مطابقة سن أمامي داكن' },
-    note: { en: 'Single zirconia crown', ar: 'تاج زركونيا واحد' },
-    visits: { en: '2 visits', ar: 'زيارتان' },
-    sim: {
-      before: { shade: 'A2', chips: [], uneven: 0.1, dark: [5], gaps: [] },
-      after: { shade: 'A2', chips: [], uneven: 0.1, gaps: [] },
-    },
-  },
+  c('01', 'A', 'smile',
+    { en: 'Full smile makeover', ar: 'تجميل كامل للابتسامة' },
+    { en: 'Crowded, uneven teeth → an even, luminous smile', ar: 'أسنان متزاحمة وغير متساوية ← ابتسامة متناسقة ومشرقة' }),
+  c('03', 'B', 'smile',
+    { en: 'From crowded to confident', ar: 'من التزاحم إلى الثقة' },
+    { en: 'Crowding and deep stains → straight, bright veneers', ar: 'تزاحم وتصبغات عميقة ← فينير مستقيم ومشرق' }),
+  c('05', 'C', 'smile',
+    { en: 'A brighter, fuller smile', ar: 'ابتسامة أكثر إشراقًا وامتلاءً' },
+    { en: 'Yellowed, uneven teeth → a full, harmonious smile', ar: 'أسنان مصفرة وغير متساوية ← ابتسامة ممتلئة ومتناغمة' }),
+  c('07', 'D', 'smile',
+    { en: 'Worn teeth, length restored', ar: 'أسنان متآكلة استعادت طولها' },
+    { en: 'Short, worn front teeth → longer, balanced veneers', ar: 'أسنان أمامية قصيرة ومتآكلة ← فينير أطول ومتوازن' }),
+  c('09', 'E', 'smile',
+    { en: 'Natural brilliance', ar: 'إشراقة طبيعية' },
+    { en: 'Irregular, yellowed teeth → even, natural-looking veneers', ar: 'أسنان غير منتظمة ومصفرة ← فينير متناسق وطبيعي المظهر' }),
+  c('02', 'A', 'retracted',
+    { en: 'Both arches, redesigned', ar: 'إعادة تصميم الفكين' },
+    { en: 'Misaligned, stained teeth → uniform veneers on both arches', ar: 'أسنان غير مصطفة ومتصبغة ← فينير متناسق للفكين' }),
+  c('04', 'B', 'retracted',
+    { en: 'Gap closed, crowding corrected', ar: 'إغلاق الفراغ وعلاج التزاحم' },
+    { en: 'Central gap and crowding → closed, aligned veneers', ar: 'فراغ أمامي وتزاحم ← فينير مصطف بدون فراغات' }),
+  c('06', 'C', 'retracted',
+    { en: 'Upper & lower transformation', ar: 'تحول كامل للفكين العلوي والسفلي' },
+    { en: 'Yellow, crowded arches → bright, even veneers', ar: 'أسنان صفراء ومتزاحمة ← فينير مشرق ومتساوٍ' }),
+  c('08', 'D', 'retracted',
+    { en: 'Full-mouth rehabilitation', ar: 'إعادة تأهيل كامل للفم' },
+    { en: 'Worn, crowded teeth → full restorations on both arches', ar: 'أسنان متآكلة ومتزاحمة ← ترميم كامل للفكين' }),
 ];
 
 const journey = [

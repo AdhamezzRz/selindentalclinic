@@ -2,13 +2,13 @@
   const tr = content.treatments.find(x => x.slug === c.treatment);
   const isSim = !!c.sim && !(c.before && c.after);
 %>
-<article class="case" data-cat="<%= c.treatment %>">
+<article class="case" data-cat="<%= c.view || c.treatment %>">
   <figure class="ba" data-ba dir="ltr" <% if (isSim) { %>data-sim="<%= JSON.stringify(c.sim) %>"<% } %>>
     <div class="ba-layer ba-before">
-      <% if (!isSim) { %><img src="<%= c.before %>" alt="<%= t(c.title) %> — <%= s('cases.before') %>" loading="lazy" decoding="async"><% } %>
+      <% if (!isSim) { %><img src="<%= c.before %>" alt="<%= tr ? t(tr.name) : '' %> — <%= t(c.title) %> — <%= s('cases.before') %>" width="1600" height="1200" loading="lazy" decoding="async" draggable="false"><% } %>
     </div>
     <div class="ba-layer ba-after">
-      <% if (!isSim) { %><img src="<%= c.after %>" alt="<%= t(c.title) %> — <%= s('cases.after') %>" loading="lazy" decoding="async"><% } %>
+      <% if (!isSim) { %><img src="<%= c.after %>" alt="<%= tr ? t(tr.name) : '' %> — <%= t(c.title) %> — <%= s('cases.after') %>" width="1600" height="1200" loading="lazy" decoding="async" draggable="false"><% } %>
     </div>
     <div class="ba-line" aria-hidden="true"><span class="ba-moon"><i></i></span></div>
     <span class="ba-tag ba-tag--b"><%= s('cases.before') %></span>
@@ -17,8 +17,8 @@
     <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="<%= s('cases.before') %> / <%= s('cases.after') %> — <%= t(c.title) %>">
   </figure>
   <div class="case-meta">
-    <p class="case-tr"><%= tr ? t(tr.name) : '' %></p>
+    <p class="case-tr"><%= tr ? t(tr.name) : '' %><% if (c.viewLabel) { %> · <%= t(c.viewLabel) %><% } %></p>
     <h3 class="case-title"><%= t(c.title) %></h3>
-    <p class="case-note"><span><%= t(c.note) %></span><span><%= t(c.visits) %></span></p>
+    <p class="case-note"><span><%= t(c.note) %></span><% if (c.visits) { %><span><%= t(c.visits) %></span><% } %></p>
   </div>
 </article>

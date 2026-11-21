@@ -8,7 +8,7 @@ Express + EJS (server-rendered for SEO), GSAP + Lenis motion, zero build step.
 
 - **Lunar brand system** from the 2026 brand guidelines: Deep Lunar, Twilight Stone, Pearl Ash, Champagne Moon (used sparingly), Smoke, Evening Clay, Lunar Dust.
 - **Cinematic home page**: moon-phase preloader, star field, the promo film in an arch that expands to full screen on scroll, cursor-following treatment previews, horizontal clinic tour, word-by-word manifesto.
-- **Before / after "moon" sliders** for cases, plus an interactive **Shade Studio** (VITA shade guide simulator).
+- **Real before / after cases** with "moon" drag sliders, plus an interactive **Shade Studio** (VITA shade guide simulator).
 - **Real clinic imagery only**: every clinic, reception and suite photo is a frame cut from the promo film.
 - **Booking form** → saved to `data/bookings.ndjson` and optionally e-mailed (SMTP). WhatsApp button when a number is configured.
 - **Journal (blog)** in English and Arabic, with a direct-answer box, table of contents, key takeaways, FAQs, author box and share links.
@@ -62,7 +62,7 @@ npm start            # http://localhost:3000
 1. Put matching photos in `public/media/cases/`, e.g. `case-01-before.jpg` and `case-01-after.jpg`. Use the same size and framing, ideally 4:3.
 2. In `src/content.js → cases`, set `before: '/media/cases/case-01-before.jpg'`, `after: '/media/cases/case-01-after.jpg'` and remove `sim`.
 
-Until then, cases are shown as clearly labelled **illustrative simulations**.
+The site currently shows **9 real SÉLIN veneer cases** (5 patients; smile and close-up views), cropped to the mouth only, with no names or metadata. Make sure every patient has consented to their photos being published.
 
 ### Doctor portraits
 
