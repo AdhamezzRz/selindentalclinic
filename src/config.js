@@ -72,8 +72,8 @@ module.exports = {
   },
 
   social: {
-    instagram: env('SOCIAL_INSTAGRAM', 'https://www.instagram.com/selindental'),
-    instagramHandle: env('SOCIAL_INSTAGRAM_HANDLE', '@selindental'),
+    instagram: env('SOCIAL_INSTAGRAM', 'https://www.instagram.com/selindentalaesthetics/'),
+    instagramHandle: env('SOCIAL_INSTAGRAM_HANDLE', '@selindentalaesthetics'),
     facebook: env('SOCIAL_FACEBOOK', ''),
     tiktok: env('SOCIAL_TIKTOK', ''),
   },
