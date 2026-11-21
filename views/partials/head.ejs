@@ -41,13 +41,11 @@
 
   <% if (page === 'home') { %>
   <div class="loader" aria-hidden="true">
-    <div class="loader-moon"><span class="loader-shadow"></span></div>
     <div class="loader-mark"><%- include('mark') %></div>
     <div class="loader-meta"><span><%= s('loader.text') %></span><span class="loader-count">0</span></div>
   </div>
   <% } %>
 
-  <div class="cursor" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"><span class="cursor-label"></span></span></div>
   <div class="grain" aria-hidden="true"></div>
 
   <header class="nav" data-nav>
@@ -69,7 +67,6 @@
   </header>
 
   <div class="menu" id="menu" aria-hidden="true">
-    <div class="menu-moon" aria-hidden="true"></div>
     <nav class="menu-links" aria-label="Mobile">
       <a href="<%= link('/') %>"><small>00</small><%= s('nav.home') %></a>
       <a href="<%= link('/treatments') %>"><small>01</small><%= s('nav.treatments') %></a>

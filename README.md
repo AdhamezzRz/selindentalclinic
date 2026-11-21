@@ -8,7 +8,7 @@ Express + EJS (server-rendered for SEO), GSAP + Lenis motion, zero build step.
 
 - **Lunar brand system** from the 2026 brand guidelines: Deep Lunar, Twilight Stone, Pearl Ash, Champagne Moon (used sparingly), Smoke, Evening Clay, Lunar Dust.
 - **Cinematic home page**: moon-phase preloader, star field, the promo film in an arch that expands to full screen on scroll, cursor-following treatment previews, horizontal clinic tour, word-by-word manifesto.
-- **Real before / after cases** with "moon" drag sliders, plus an interactive **Shade Studio** (VITA shade guide simulator).
+- **Real before / after cases** with drag sliders.
 - **Real clinic imagery only**: every clinic, reception and suite photo is a frame cut from the promo film.
 - **Booking form** → saved to `data/bookings.ndjson` and optionally e-mailed (SMTP). WhatsApp button when a number is configured.
 - **Journal (blog)** in English and Arabic, with a direct-answer box, table of contents, key takeaways, FAQs, author box and share links.
@@ -73,4 +73,5 @@ Add `public/media/doctors/walid-zaki.jpg` (portrait, 4:5) and set `photo: '/medi
 - `public/media/selin-promo.mp4`: the promo film, re-encoded for web (1080p, faststart).
 - `public/media/selin-promo-720.mp4`: muted loop used in the hero and the scroll film.
 - `public/media/tour/*.jpg`: clinic frames cut from the promo.
-- `public/media/gen/*.webp`: editorial still-life images for treatments (products only, no patients and no clinic spaces).
+- `public/media/doctors/*`: portraits of Dr. Walid Zaki and Dr. Mohammed Khaled (retouched from their own photos, with a clean studio backdrop).
+- `public/img/logo-light.svg`, `logo-dark.svg`, `wordmark.svg`, `logomark.svg`, `mark.svg` (favicon): the official SÉLIN logo, vectorised from the brand guidelines.

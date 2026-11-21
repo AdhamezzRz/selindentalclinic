@@ -2,10 +2,9 @@
   <div class="doc-portrait">
     <div class="doc-arch">
       <% if (d.photo) { %>
-        <img src="<%= d.photo %>" alt="<%= t(d.name) %>" loading="lazy" decoding="async">
+        <img src="<%= d.photo %>" alt="<%= t(d.name) %> — <%= t(d.role) %>, SÉLIN Dental Aesthetics" width="1200" height="1500" loading="lazy" decoding="async">
       <% } else { %>
         <div class="doc-mono" aria-hidden="true">
-          <span class="doc-orbit"></span>
           <span class="doc-initials"><%= d.initials %></span>
           <%- include('mark') %>
         </div>
@@ -16,6 +15,7 @@
   <div class="doc-body">
     <h3 class="doc-name display"><%= t(d.name) %></h3>
     <p class="doc-focus"><%= t(d.focus) %></p>
+    <% if (d.credentials) { %><p class="doc-cred"><%= t(d.credentials) %></p><% } %>
     <blockquote class="doc-quote">“<%= t(d.quote) %>”</blockquote>
     <% if (typeof full !== 'undefined' && full) { %><p class="doc-bio"><%= t(d.bio) %></p><% } %>
   </div>

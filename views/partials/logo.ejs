@@ -1,7 +1,2 @@
-<%# SÉLIN wordmark — recreated from the brand guidelines (calligraphic e + star) %>
-<span class="wm<%= typeof small !== 'undefined' && small ? ' wm--sm' : '' %>" aria-label="SÉLIN Dental Aesthetics" role="img" dir="ltr">
-  <span class="wm-word" aria-hidden="true">
-    <span class="wm-l">S</span><svg class="wm-e" viewBox="-6 -40 112 140" aria-hidden="true"><path class="wm-e-stroke" d="M2 80 C30 71 62 56 84 41 C96 32 92 16 74 14 C50 12 28 30 24 53 C20 77 38 96 62 94 C76 93 86 85 93 73"/><path class="wm-star" transform="translate(60 -22) scale(15)" d="M0 -1 C.1 -.1 .1 -.1 1 0 C.1 .1 .1 .1 0 1 C-.1 .1 -.1 .1 -1 0 C-.1 -.1 -.1 -.1 0 -1Z"/></svg><span class="wm-l">LIN</span>
-  </span>
-  <span class="wm-sub" aria-hidden="true">Dental Aesthetics</span>
-</span>
+<%# Official SÉLIN logo (vectorised from the brand guidelines). tone: 'light' (default, for dark backgrounds) | 'dark' %>
+<span class="logo<%= typeof small !== 'undefined' && small ? ' logo--sm' : '' %>"><img src="/img/logo-<%= typeof tone !== 'undefined' && tone === 'dark' ? 'dark' : 'light' %>.svg" alt="SÉLIN Dental Aesthetics" width="3080" height="1476" decoding="async"></span>

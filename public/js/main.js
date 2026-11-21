@@ -98,6 +98,7 @@
   /* ── Cursor + magnetic ─────────────────────────────────── */
   if (fine && !reduced) {
     const cursor = $('.cursor');
+    if (cursor) {
     const dot = $('.cursor-dot');
     const ring = $('.cursor-ring');
     const label = $('.cursor-label');
@@ -118,6 +119,7 @@
       label.textContent = lab ? lab.dataset.cursor : '';
     });
     document.addEventListener('pointerleave', () => cursor.classList.remove('is-hover', 'is-label'));
+    }
 
     $$('.magnetic').forEach((el) => {
       el.addEventListener('pointermove', (e) => {
@@ -140,7 +142,7 @@
       w = canvas.clientWidth; h = canvas.clientHeight;
       canvas.width = w * dpr; canvas.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const n = Math.round((w * h) / 9000 * density);
+      const n = Math.round((w * h) / 16000 * density);
       stars = Array.from({ length: n }, () => ({
         x: Math.random() * w, y: Math.random() * h,
         r: Math.random() * 1.1 + 0.2,
@@ -148,7 +150,7 @@
         s: Math.random() * 0.02 + 0.004,
         p: Math.random() * Math.PI * 2,
         z: Math.random() * 0.6 + 0.2,
-        gold: Math.random() < 0.035,
+        gold: false,
       }));
     };
     const sparkle = (x, y, r, a) => {
@@ -510,10 +512,8 @@
     tl.to('.line-in', { y: 0, duration: 1.5, stagger: 0.12 }, 0)
       .to('.split-lines .w-in', { y: 0, duration: 1.4, stagger: 0.05 }, 0)
       .to('.hero-in', { y: 0, opacity: 1, duration: 1.3, stagger: 0.1 }, 0.35)
-      .from('.hero-arch', { clipPath: 'inset(100% 0 0 0 round 999px 999px 28px 28px)', duration: 1.8, ease: 'expo.inOut' }, 0)
+      .from('.hero-arch', { clipPath: 'inset(100% 0 0 0 round 22px)', duration: 1.8, ease: 'expo.inOut' }, 0)
       .from('.hero-video', { scale: 1.4, duration: 2.2 }, 0.2)
-      .from('.hero-tag, .hero-orbit', { opacity: 0, scale: 0.6, duration: 1.2, stagger: 0.12 }, 0.9)
-      .from('.hero-moon', { opacity: 0, scale: 0.85, duration: 2.4 }, 0)
       .from('.nav', { opacity: 0, duration: 1.2, clearProps: 'opacity' }, 0.4);
     return tl;
   }
@@ -522,18 +522,15 @@
   const loader = $('.loader');
   if (loader) {
     const seen = store.get('selin-seen');
-    const dur = seen ? 0.9 : 2.2;
+    const dur = seen ? 0.6 : 1.6;
     const count = $('.loader-count', loader);
-    const shadow = $('.loader-shadow', loader);
     const o = { v: 0 };
     lenis && lenis.stop();
     const tl = gsap.timeline();
-    tl.to($('.mark-e', loader), { strokeDashoffset: 0, duration: dur * 0.9, ease: 'power2.inOut' }, 0)
-      .to(o, { v: 100, duration: dur, ease: 'power2.inOut', onUpdate: () => {
+    tl.to(o, { v: 100, duration: dur, ease: 'power2.inOut', onUpdate: () => {
         count.textContent = Math.round(o.v);
-        shadow.style.transform = `translateX(${isRTL ? '' : '-'}${(o.v * 1.04).toFixed(1)}%)`;
       } }, 0)
-      .from('.loader-moon', { scale: 0.7, opacity: 0, duration: dur * 0.6, ease }, 0)
+      .from('.loader-mark', { opacity: 0, y: 12, duration: dur * 0.6, ease }, 0)
       .to(loader, { clipPath: 'circle(0% at 50% 50%)', duration: 1.2, ease: 'expo.inOut' }, dur + 0.15)
       .add(() => { loader.remove(); lenis && lenis.start(); store.set('selin-seen', '1'); }, dur + 1.3)
       .add(intro(), dur + 0.55);
@@ -563,7 +560,6 @@
   // Hero parallax out
   if ($('[data-hero]')) {
     gsap.to('.hero-grid', { yPercent: -12, opacity: 0.2, ease: 'none', scrollTrigger: { trigger: '[data-hero]', start: 'top top', end: 'bottom top', scrub: true } });
-    gsap.to('.hero-moon', { yPercent: -30, ease: 'none', scrollTrigger: { trigger: '[data-hero]', start: 'top top', end: 'bottom top', scrub: true } });
   }
 
   // FILM — arch expands to full-bleed
@@ -574,7 +570,7 @@
     const mm = gsap.matchMedia();
     mm.add({ small: '(max-width: 860px)', large: '(min-width: 861px)' }, (ctx) => {
       const small = ctx.conditions.small;
-      gsap.set(mask, { width: small ? '68vw' : 'min(30vw, 420px)', height: small ? '64vh' : '74vh', borderRadius: '999px 999px 30px 30px' });
+      gsap.set(mask, { width: small ? '68vw' : 'min(30vw, 420px)', height: small ? '64vh' : '74vh', borderRadius: '22px' });
       const tl = gsap.timeline({ scrollTrigger: { trigger: film, start: 'top top', end: 'bottom bottom', scrub: 1 } });
       tl.to(mask, { width: '100vw', height: '100vh', borderRadius: '0px 0px 0px 0px', ease: 'power2.inOut', duration: 1 })
         .to(mask, { '--veil': 1, duration: 0.4 }, 0.6)
@@ -604,7 +600,6 @@
 
   // CTA moon rises
   $$('[data-cta]').forEach((cta) => {
-    gsap.fromTo($('.cta-moon', cta), { yPercent: 92 }, { yPercent: 62, ease: 'none', scrollTrigger: { trigger: cta, start: 'top bottom', end: 'bottom bottom', scrub: true } });
   });
 
   // Image parallax

@@ -75,8 +75,8 @@ const ui = {
 
   'manifesto.label': { en: 'The SÉLIN philosophy', ar: 'فلسفة سيلين' },
   'manifesto.text': {
-    en: 'Every face holds its own light. We do not manufacture smiles — we reveal them, with digital precision, honest advice and the patience of craftsmen. Darkness creates the contrast that makes the light glow.',
-    ar: 'لكل وجه ضوؤه الخاص. نحن لا نصنع ابتسامات جاهزة، بل نكشف عنها بدقة رقمية ونصيحة صادقة وصبر الحرفيين. فالظلام هو ما يجعل الضوء يتوهج.',
+    en: 'Named after Selene, goddess of the moon — she who radiates gentle light. Where ordinary clinics rely on harsh brightness, SÉLIN chooses moonlight: warm, flattering, softly luminous. Not the brightest smile, but the most beautiful one.',
+    ar: 'اسمنا مستوحى من سيلين، إلهة القمر — التي تشع ضوءًا لطيفًا. وبينما تعتمد العيادات العادية على إضاءة قاسية، اختارت سيلين ضوء القمر: دافئ ولطيف ومتوهج بهدوء. ليست الابتسامة الأكثر بياضًا، بل الأجمل.',
   },
   'pillar.1.t': { en: 'Designed digitally', ar: 'تصميم رقمي' },
   'pillar.1.d': { en: 'Your smile is planned on screen and previewed before treatment.', ar: 'نخطط ابتسامتك على الشاشة ونعرضها عليك قبل العلاج.' },
@@ -107,7 +107,7 @@ const ui = {
 
   'cases.label': { en: 'Cases', ar: 'الحالات' },
   'cases.title': { en: 'Before. After. Ever after.', ar: 'قبل. بعد. وإلى الأبد.' },
-  'cases.sub': { en: 'Real smiles from our chairs. Drag the moon to reveal each transformation.', ar: 'ابتسامات حقيقية من عيادتنا. اسحب القمر لتكشف كل تحول.' },
+  'cases.sub': { en: 'Real smiles from our chairs. Drag to reveal each transformation.', ar: 'ابتسامات حقيقية من عيادتنا. اسحب لتكشف كل تحول.' },
   'cases.before': { en: 'Before', ar: 'قبل' },
   'cases.after': { en: 'After', ar: 'بعد' },
   'cases.all': { en: 'View all cases', ar: 'شاهد كل الحالات' },
@@ -115,8 +115,8 @@ const ui = {
   'cases.filter.smile': { en: 'Smile view', ar: 'صورة الابتسامة' },
   'cases.filter.closeup': { en: 'Close-up view', ar: 'صورة مقربة' },
   'cases.realNote': {
-    en: 'Real SÉLIN patients, photographed in our clinic. Individual results vary.',
-    ar: 'مرضى حقيقيون في سيلين، تم تصويرهم في عيادتنا. تختلف النتائج من شخص لآخر.',
+    en: 'Real SÉLIN guests, photographed in our clinic. Individual results vary.',
+    ar: 'ضيوف حقيقيون في سيلين، تم تصويرهم في عيادتنا. تختلف النتائج من شخص لآخر.',
   },
   'cases.sim': { en: 'Illustrative simulation', ar: 'محاكاة توضيحية' },
   'cases.simNote': {

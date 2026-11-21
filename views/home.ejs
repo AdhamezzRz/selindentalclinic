@@ -3,7 +3,6 @@
 <!-- ═════════════ HERO ═════════════ -->
 <section class="hero sec--dark" data-hero>
   <canvas class="stars" data-stars data-density="1.2" aria-hidden="true"></canvas>
-  <div class="hero-moon" aria-hidden="true"><span class="hero-moon-core"></span></div>
 
   <div class="hero-grid wrap">
     <div class="hero-copy">
@@ -32,14 +31,7 @@
     <div class="hero-visual">
       <div class="hero-arch" data-cursor="<%= s('film.play') %>" data-lightbox-open role="button" tabindex="0" aria-label="<%= s('hero.film') %>">
         <video class="hero-video" src="/media/selin-promo-720.mp4" poster="/media/poster.jpg" muted loop playsinline autoplay preload="metadata"></video>
-        <span class="hero-arch-shine" aria-hidden="true"></span>
       </div>
-      <svg class="hero-orbit" viewBox="0 0 200 200" aria-hidden="true">
-        <defs><path id="orbitPath" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs>
-        <text><textPath href="#orbitPath">SÉLIN · DENTAL AESTHETICS · THE ART OF THE SMILE · </textPath></text>
-      </svg>
-      <span class="hero-tag hero-tag--1"><span class="spark"></span>Clinic 1</span>
-      <span class="hero-tag hero-tag--2"><span class="spark"></span>Clinic 2</span>
     </div>
   </div>
 
@@ -68,7 +60,7 @@
     <div class="pillars">
       <% [1,2,3].forEach(function (i) { %>
         <div class="pillar reveal">
-          <%- include('partials/moon', { p: i / 3 }) %>
+          <span class="pillar-no">0<%= i %></span>
           <h3><%= s('pillar.' + i + '.t') %></h3>
           <p><%= s('pillar.' + i + '.d') %></p>
         </div>
@@ -120,7 +112,6 @@
 
 <!-- ═════════════ CASES ═════════════ -->
 <section class="cases sec sec--twilight" id="cases">
-  <canvas class="stars" data-stars data-density=".5" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="sec-head sec-head--split">
       <div>
@@ -149,7 +140,6 @@
 </section>
 
 <!-- ═════════════ SHADE STUDIO ═════════════ -->
-<%- include('partials/shade') %>
 
 <!-- ═════════════ DOCTORS ═════════════ -->
 <section class="docs sec sec--dark">
@@ -197,7 +187,6 @@
     <ol class="journey-list">
       <% content.journey.forEach(function (j, i) { %>
         <li class="journey-step reveal">
-          <%- include('partials/moon', { p: (i + 1) / 4 }) %>
           <span class="journey-no"><%= j.no %></span>
           <h3 class="display"><%= t(j.title) %></h3>
           <p><%= t(j.text) %></p>

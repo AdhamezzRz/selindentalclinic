@@ -1,7 +1,6 @@
 <%- include('partials/head') %>
 
 <section class="thero sec--dark">
-  <canvas class="stars" data-stars data-density=".6" aria-hidden="true"></canvas>
   <div class="wrap thero-grid">
     <div class="thero-copy">
       <%- include('partials/crumbs') %>
@@ -35,7 +34,7 @@
         <p class="eyebrow"><span class="spark"></span><%= s('treat.process') %></p>
         <ol class="steps">
           <% tr.steps.forEach(function (st, i) { %>
-            <li class="reveal"><%- include('partials/moon', { p: (i + 1) / tr.steps.length }) %><span><%= t(st) %></span></li>
+            <li class="reveal"><span class="step-no">0<%= i + 1 %></span><span><%= t(st) %></span></li>
           <% }) %>
         </ol>
       </div>

@@ -18,7 +18,7 @@ const posts = [
     updated: '2026-11-18',
     author: 'walid-zaki',
     treatment: 'porcelain-veneers',
-    image: '/media/gen/veneers.webp',
+    image: '/media/cases/case-01-after.jpg',
     readMins: 6,
     category: { en: 'Smile design', ar: 'تصميم الابتسامة' },
     title: {
@@ -105,7 +105,7 @@ const posts = [
     updated: '2026-11-14',
     author: 'mohammed-khaled',
     treatment: 'digital-smile-design',
-    image: '/media/gen/digital.webp',
+    image: '/media/cases/case-05-after.jpg',
     readMins: 5,
     category: { en: 'Technology', ar: 'التقنية' },
     title: {
@@ -178,7 +178,7 @@ const posts = [
     updated: '2026-11-10',
     author: 'walid-zaki',
     treatment: 'teeth-whitening',
-    image: '/media/gen/whitening.webp',
+    image: '/media/cases/case-09-after.jpg',
     readMins: 5,
     category: { en: 'Whitening', ar: 'التبييض' },
     title: {
@@ -251,7 +251,7 @@ const posts = [
     updated: '2026-11-06',
     author: 'mohammed-khaled',
     treatment: 'clear-aligners',
-    image: '/media/gen/aligners.webp',
+    image: '/media/tour/t11.jpg',
     readMins: 6,
     category: { en: 'Orthodontics', ar: 'التقويم' },
     title: {
@@ -325,7 +325,7 @@ const posts = [
     updated: '2026-11-02',
     author: 'mohammed-khaled',
     treatment: 'dental-implants',
-    image: '/media/gen/implants.webp',
+    image: '/media/tour/t10.jpg',
     readMins: 7,
     category: { en: 'Implants', ar: 'الزراعة' },
     title: {

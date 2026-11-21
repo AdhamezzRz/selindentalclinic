@@ -13,9 +13,9 @@ const doctors = [
     initials: 'WZ',
     role: { en: 'Co-Founder', ar: 'شريك مؤسس' },
     // Replace with the doctor's real speciality.
-    focus: { en: 'Aesthetic & Restorative Dentistry', ar: 'تجميل وترميم الأسنان' },
-    // Put a portrait at public/media/doctors/walid-zaki.jpg and set the path here.
-    photo: '',
+    focus: { en: 'Fixed Prosthodontics & Aesthetic Dentistry', ar: 'التركيبات الثابتة وتجميل الأسنان' },
+    credentials: { en: 'BDS · Master’s degree · Assistant Lecturer, Fixed Prosthodontics', ar: 'بكالوريوس طب الأسنان · ماجستير · مدرس مساعد التركيبات الثابتة' },
+    photo: '/media/doctors/walid-zaki.webp',
     quote: {
       en: 'A beautiful smile is engineered in microns and judged in a single glance. We obsess over both.',
       ar: 'الابتسامة الجميلة تُصنع بدقة الميكرون وتُرى في نظرة واحدة. ونحن نهتم بالاثنين.',
@@ -30,8 +30,9 @@ const doctors = [
     name: { en: 'Dr. Mohammed Khaled', ar: 'د. محمد خالد' },
     initials: 'MK',
     role: { en: 'Co-Founder', ar: 'شريك مؤسس' },
-    focus: { en: 'Implant & Smile Rehabilitation', ar: 'زراعة الأسنان وإعادة تأهيل الابتسامة' },
-    photo: '',
+    focus: { en: 'Fixed Prosthodontics & Smile Rehabilitation', ar: 'التركيبات الثابتة وإعادة تأهيل الابتسامة' },
+    credentials: { en: 'BDS · Master’s degree · Assistant Lecturer, Fixed Prosthodontics', ar: 'بكالوريوس طب الأسنان · ماجستير · مدرس مساعد التركيبات الثابتة' },
+    photo: '/media/doctors/mohammed-khaled.webp',
     quote: {
       en: 'Function first, beauty always. When a smile works perfectly, confidence follows naturally.',
       ar: 'الوظيفة أولًا والجمال دائمًا. حين تعمل الابتسامة بكفاءة، تأتي الثقة تلقائيًا.',
@@ -47,7 +48,7 @@ const treatments = [
   {
     slug: 'porcelain-veneers',
     no: '01',
-    image: '/media/gen/veneers.webp',
+    image: '/media/cases/case-03-after.jpg',
     name: { en: 'Porcelain Veneers', ar: 'فينير البورسلين' },
     kicker: { en: 'Hand-layered ceramic', ar: 'خزف مصنوع بعناية' },
     short: {
@@ -91,7 +92,7 @@ const treatments = [
   {
     slug: 'digital-smile-design',
     no: '02',
-    image: '/media/gen/digital.webp',
+    image: '/media/cases/case-07-after.jpg',
     name: { en: 'Digital Smile Design', ar: 'تصميم الابتسامة الرقمي' },
     kicker: { en: 'See it before we start', ar: 'شاهد النتيجة قبل البدء' },
     short: {
@@ -128,7 +129,7 @@ const treatments = [
   {
     slug: 'dental-implants',
     no: '03',
-    image: '/media/gen/implants.webp',
+    image: '/media/tour/t10.jpg',
     name: { en: 'Dental Implants', ar: 'زراعة الأسنان' },
     kicker: { en: 'Engineered to belong', ar: 'هندسة تندمج معك' },
     short: {
@@ -165,7 +166,7 @@ const treatments = [
   {
     slug: 'teeth-whitening',
     no: '04',
-    image: '/media/gen/whitening.webp',
+    image: '/media/cases/case-09-after.jpg',
     name: { en: 'Teeth Whitening', ar: 'تبييض الأسنان' },
     kicker: { en: 'Brightness, refined', ar: 'إشراقة مدروسة' },
     short: {
@@ -202,7 +203,7 @@ const treatments = [
   {
     slug: 'clear-aligners',
     no: '05',
-    image: '/media/gen/aligners.webp',
+    image: '/media/tour/t11.jpg',
     name: { en: 'Clear Aligners', ar: 'التقويم الشفاف' },
     kicker: { en: 'Invisible orthodontics', ar: 'تقويم غير مرئي' },
     short: {
@@ -239,7 +240,7 @@ const treatments = [
   {
     slug: 'orthodontics',
     no: '06',
-    image: '/media/gen/ortho.webp',
+    image: '/media/cases/case-04-after.jpg',
     name: { en: 'Orthodontics', ar: 'تقويم الأسنان' },
     kicker: { en: 'Alignment, perfected', ar: 'محاذاة مثالية' },
     short: {
@@ -276,7 +277,7 @@ const treatments = [
   {
     slug: 'zirconia-crowns',
     no: '07',
-    image: '/media/gen/crowns.webp',
+    image: '/media/cases/case-08-after.jpg',
     name: { en: 'Zirconia Crowns & Bridges', ar: 'تيجان وجسور الزركونيا' },
     kicker: { en: 'Strength meets translucency', ar: 'قوة وشفافية معًا' },
     short: {
