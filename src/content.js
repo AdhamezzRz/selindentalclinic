@@ -518,4 +518,60 @@ const smiles = (() => {
   }
 })();
 
-module.exports = { doctors, treatments, cases, journey, tour, faq, reviews, smiles };
+/**
+ * GUEST STORIES — video testimonials (real guests, shared by the clinic).
+ * Chapters: `t` = start time in seconds. Quotes are faithful, lightly edited
+ * renderings of what the guest says (original: Egyptian Arabic).
+ */
+const stories = [
+  {
+    id: 'story-01',
+    video: '/media/stories/story-01.mp4',
+    poster: '/media/stories/story-01.jpg',
+    duration: 94,
+    uploadDate: '2026-11-01',
+    treatment: 'porcelain-veneers',
+    headline: { en: '“They changed my life.”', ar: '«غيّرولي حياتي.»' },
+    guest: { en: 'SÉLIN guest · Porcelain veneers', ar: 'ضيفة سيلين · فينير البورسلين' },
+    chapters: [
+      {
+        t: 3,
+        label: { en: 'Before', ar: 'قبل' },
+        quote: {
+          en: 'My teeth were the thing I hated most in my life. I never smiled in photos — even when I laughed, I covered my mouth.',
+          ar: 'سناني كانت أكتر حاجة بكرهها في حياتي. ما كنتش بضحك في أي صور، وحتى لما أضحك كنت بغطي بُقي.',
+        },
+      },
+      {
+        t: 10,
+        label: { en: 'Designed together', ar: 'صمّمناها سوا' },
+        quote: {
+          en: 'Dr. Mohammed sent me options on WhatsApp — even the shades. We chose together, and he told me which colour would suit my skin tone best.',
+          ar: 'دكتور محمد بعتلي options على واتساب، حتى الألوان كنا بننقّي مع بعض… وقالي الـ skintone بتاعتك اللون ده هيليق عليه أكتر.',
+        },
+      },
+      {
+        t: 26,
+        label: { en: 'Honesty', ar: 'الأمانة' },
+        quote: {
+          en: 'There was a tiny detail I couldn’t even see — but the doctor insisted I come back so he could redo it. That honesty means so much to me.',
+          ar: 'كان في حاجة صغيرة مضايقة الدكتور وأنا مش شايفاها… هو اللي أصرّ إني أجي وأعيد عليها. بصراحة الأمانة دي حاجة مهمة أوي بالنسبة لي.',
+        },
+      },
+      {
+        t: 49.5,
+        label: { en: 'After', ar: 'بعد' },
+        quote: {
+          en: 'They changed my life. I cried when I got home. Now I’m so confident — I laugh without being embarrassed. The best decision I’ve ever made.',
+          ar: 'غيّرولي حياتي… لما روّحت عيّطت. بقيت واثقة من نفسي قوي وبضحك عادي مش مكسوفة. أحلى أحلى قرار خدته.',
+        },
+      },
+    ],
+    transcript: {
+      ar: 'أنا جيت لدكتور محمد ودكتور وليد عشان أعمل veneers، عشان دي أكتر حاجة كنت بكرهها في حياتي، يعني سناني. للأسف ما كنتش بضحك في أي صور، حتى لما أجي أضحك بغطي بُقي. دكتور محمد بعتلي على واتساب options، حتى الألوان كنا بننقّي مع بعض، إيه حاجة حاسة هتليق على وشي أكتر. وطبعًا الدكتور فاهم أكتر مني، فقالي مثلًا: الـ skintone بتاعتك اللون ده هيليق عليه أكتر. بصراحة دي بالنسبة لي كانت أحلى حاجة. بعد ما ركّبت، كل حاجة صغيرة كانت مضايقاني غيّرناها. وفي حاجة برضه كانت مضايقة الدكتور، أنا مش شايفاها، بس هو لدرجة قالي: لا، أنا في حاجة مضايقاني — وأكّد عليها، وجيت تاني عشان أغيّرها. وبصراحة الأمانة دي حاجة بالنسبة لي مهمة أوي. أنا ما لاحظتهاش، فالدكتور هو اللي أصرّ إني أجي وأعيد عليها. فبصراحة الـ process لذيذ قوي. فحاسة إنهم بصراحة غيّرولي حياتي، من غير ما أكون over. وعلى فكرة، أنا ما قولتلكمش كده، بس أنا لما روّحت عيّطت من كتر ما كنت متأثرة، من إني حاسة إني بقيت واثقة من نفسي قوي، وممكن أضحك عادي مش مكسوفة. فأحلى أحلى قرار خدته. ما تخيّلتش إن الـ result هتبسطني للدرجة دي، واتبسطت أوي أوي أوي، الحمد لله. وكل حد يسألني… دكتور وليد ودكتور محمد في سيلين دنتال إيستاتيكس.',
+      en: 'I came to Dr. Mohammed and Dr. Walid to get veneers, because my teeth were the thing I hated most in my life. Sadly, I never smiled in any photos — even when I laughed, I would cover my mouth. Dr. Mohammed sent me options on WhatsApp; we even chose the colours together — whatever I felt would suit my face best. And of course the doctor understands more than I do, so he told me, for example: with your skin tone, this shade will suit you better. Honestly, for me, that was the best part. After the fitting, any small thing that bothered me, we changed. There was also something bothering the doctor that I couldn’t even see — he insisted on it, and I came back to have it changed. Honestly, that integrity matters so much to me. I hadn’t noticed it; the doctor is the one who insisted I come back and redo it. The whole process was genuinely lovely. I feel they truly changed my life — without exaggerating. And I haven’t told you this, but when I got home I cried, I was so moved — I had become so confident, I could laugh normally without being embarrassed. It’s the best, best decision I have ever made. I never imagined the result would make me this happy. I’m so, so happy, thank God. And everyone who asks me… Dr. Walid and Dr. Mohammed at SÉLIN Dental Aesthetics.',
+    },
+  },
+];
+
+module.exports = { doctors, treatments, cases, journey, tour, faq, reviews, smiles, stories };

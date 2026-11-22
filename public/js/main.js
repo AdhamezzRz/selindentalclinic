@@ -300,6 +300,40 @@
     }
   }
 
+  /* ── Guest story: video + chapters ── */
+  $$('[data-story]').forEach((sec) => {
+    const v = $('[data-story-video]', sec);
+    const frame = $('[data-story-frame]', sec);
+    const playBtn = $('[data-story-play]', sec);
+    const prog = $('[data-story-progress]', sec);
+    const chapters = $$('[data-chapter]', sec);
+    const times = chapters.map((c) => parseFloat(c.dataset.chapter));
+    const start = (t) => {
+      if (typeof t === 'number') { v.preload = 'auto'; v.currentTime = t; }
+      const hero = $('.hero-video'); if (hero && !hero.muted) hero.muted = true;
+      v.muted = false;
+      v.play().catch(() => {});
+    };
+    v.addEventListener('play', () => frame.classList.add('is-playing'));
+    v.addEventListener('pause', () => frame.classList.remove('is-playing'));
+    v.addEventListener('ended', () => frame.classList.remove('is-playing'));
+    playBtn.addEventListener('click', (e) => { e.stopPropagation(); start(); });
+    frame.addEventListener('click', () => { if (v.paused) start(); else v.pause(); });
+    chapters.forEach((c, i) => c.addEventListener('click', () => start(times[i] + 0.01)));
+    v.addEventListener('timeupdate', () => {
+      const ct = v.currentTime;
+      if (prog && v.duration) prog.style.transform = `scaleX(${(ct / v.duration).toFixed(4)})`;
+      let idx = 0;
+      times.forEach((tt, i) => { if (ct >= tt - 0.05) idx = i; });
+      chapters.forEach((c, i) => {
+        c.classList.toggle('is-active', i === idx);
+        const end = times[i + 1] ?? (v.duration || ct + 1);
+        const p = i < idx ? 1 : i > idx ? 0 : Math.min(1, Math.max(0, (ct - times[i]) / (end - times[i])));
+        const bar = $('.ch-bar i', c); if (bar) bar.style.transform = `scaleX(${p.toFixed(3)})`;
+      });
+    });
+  });
+
   /* share */
   $$('[data-share]').forEach((b) => b.addEventListener('click', async (e) => {
     e.stopPropagation();

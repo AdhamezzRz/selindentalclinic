@@ -186,6 +186,31 @@ function buildGraph(o) {
     const f = faqNode(content.faq, lang, url);
     if (f) graph.push(f);
   }
+  if ((kind === 'home' || kind === 'cases') && content.stories) {
+    content.stories.forEach((st) => {
+      graph.push({
+        '@type': 'VideoObject',
+        '@id': BASE() + '/#' + st.id,
+        name: lang === 'ar' ? 'قصة ضيفة: فينير البورسلين في سيلين' : 'Guest story: porcelain veneers at SÉLIN Dental Aesthetics',
+        description: pick(st.chapters[st.chapters.length - 1].quote, lang),
+        thumbnailUrl: abs(st.poster),
+        contentUrl: abs(st.video),
+        uploadDate: st.uploadDate,
+        duration: `PT${Math.floor(st.duration / 60)}M${st.duration % 60}S`,
+        inLanguage: 'ar',
+        transcript: st.transcript.ar,
+        publisher: { '@id': ID.clinic() },
+        about: { '@id': ID.treatment(st.treatment) },
+        hasPart: st.chapters.map((c, i) => ({
+          '@type': 'Clip',
+          name: pick(c.label, lang),
+          startOffset: Math.floor(c.t),
+          endOffset: Math.floor(st.chapters[i + 1] ? st.chapters[i + 1].t : st.duration),
+          url: abs((lang === 'ar' ? '/ar' : '') + '/#stories'),
+        })),
+      });
+    });
+  }
   if (kind === 'treatments') {
     content.treatments.forEach((t) => graph.push(procedureNode(t, lang)));
     graph.push({

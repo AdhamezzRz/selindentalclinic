@@ -1,0 +1,51 @@
+<% if (content.stories && content.stories.length) { const st = content.stories[0]; const fmt = (x) => Math.floor(x / 60) + ':' + String(Math.round(x % 60)).padStart(2, '0'); %>
+<section class="story sec sec--pearl" data-story id="stories">
+  <div class="wrap story-grid">
+    <div class="story-media reveal">
+      <div class="story-frame" data-story-frame>
+        <video data-story-video src="<%= st.video %>" poster="<%= st.poster %>" preload="none" playsinline></video>
+        <span class="story-progress" aria-hidden="true"><i data-story-progress></i></span>
+        <button class="story-play" type="button" data-story-play aria-label="<%= s('story.play') %>">
+          <span class="story-play-ico" aria-hidden="true"></span>
+          <span class="story-play-txt"><%= s('story.play') %><small><%= fmt(st.duration) %></small></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="story-copy">
+      <p class="eyebrow"><span class="spark"></span><%= s('story.label') %></p>
+      <h2 class="display h2 split"><%= s('story.title') %></h2>
+      <p class="story-headline display reveal"><%= t(st.headline) %></p>
+
+      <ol class="chapters" data-chapters aria-label="<%= s('story.chapters') %>">
+        <% st.chapters.forEach(function (c, i) { %>
+          <li>
+            <button class="chapter<%= i === 0 ? ' is-active' : '' %>" type="button" data-chapter="<%= c.t %>">
+              <span class="ch-head"><span class="ch-time"><%= fmt(c.t) %></span><span class="ch-label"><%= t(c.label) %></span></span>
+              <span class="ch-quote">“<%= t(c.quote) %>”</span>
+              <span class="ch-bar" aria-hidden="true"><i></i></span>
+            </button>
+          </li>
+        <% }) %>
+      </ol>
+
+      <div class="story-foot reveal">
+        <p class="story-guest"><span class="spark"></span><%= t(st.guest) %> · <%= s('story.by') %></p>
+        <% if (config.google.ratingValue) { %>
+        <a class="story-rating" href="<%= config.google.businessUrl || '#' %>" target="_blank" rel="noopener">
+          <span class="rating-stars rating-stars--sm" style="--r: <%= (parseFloat(config.google.ratingValue) / 5 * 100).toFixed(0) %>%" aria-hidden="true"></span>
+          <strong><%= config.google.ratingValue %></strong> · <%= config.google.ratingCount %> <%= s('story.reviews') %>
+        </a>
+        <% } %>
+      </div>
+
+      <details class="story-transcript">
+        <summary><%= s('story.transcript') %><i aria-hidden="true"></i></summary>
+        <p class="fine"><%= s('story.transcript.note') %></p>
+        <p lang="ar" dir="rtl" class="tr-ar"><%= st.transcript.ar %></p>
+        <p lang="en" dir="ltr" class="tr-en"><%= st.transcript.en %></p>
+      </details>
+    </div>
+  </div>
+</section>
+<% } %>
