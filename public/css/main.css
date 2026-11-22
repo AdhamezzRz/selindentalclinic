@@ -974,3 +974,4 @@ img.mark { width: 100%; height: auto; display: block; }
 .smile-card figcaption .spark { width: 8px; height: 8px; color: var(--champagne); }
 [lang="ar"] .smile-card figcaption { letter-spacing: 0; font-size: 12px; }
 .loader-seam { position: absolute; left: 0; right: 0; top: 50%; height: 1px; transform: scaleX(0); transform-origin: center; background: linear-gradient(90deg, transparent, var(--champagne) 20%, #F5F1EB 50%, var(--champagne) 80%, transparent); box-shadow: 0 0 18px rgba(196, 176, 138, .7); z-index: 2; }
+.ba--portrait { aspect-ratio: 4 / 5; }

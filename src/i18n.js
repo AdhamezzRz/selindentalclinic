@@ -112,6 +112,7 @@ const ui = {
   'cases.after': { en: 'After', ar: 'بعد' },
   'cases.all': { en: 'View all cases', ar: 'شاهد كل الحالات' },
   'cases.filter.all': { en: 'All', ar: 'الكل' },
+  'cases.filter.face': { en: 'Full face', ar: 'الوجه كاملًا' },
   'cases.filter.smile': { en: 'Smile view', ar: 'صورة الابتسامة' },
   'cases.filter.closeup': { en: 'Close-up view', ar: 'صورة مقربة' },
   'cases.realNote': {

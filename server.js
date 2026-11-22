@@ -147,7 +147,7 @@ router.get('/treatments/:slug', (req, res, next) => {
     page: 'treatments', kind: 'treatment',
     tr,
     nextTr: content.treatments[(idx + 1) % content.treatments.length],
-    related: content.cases.filter((c) => c.treatment === tr.slug).slice(0, 4),
+    related: content.cases.filter((c) => c.treatment === tr.slug && c.view === 'smile').slice(0, 4),
     relatedPosts: posts.filter((p) => p.treatment === tr.slug).slice(0, 2),
     title: L.t(tr.name), description: L.t(tr.short), ogImage: tr.image,
     crumbs: crumb(L, { name: L.s('nav.treatments'), url: L.link('/treatments') }, { name: L.t(tr.name), url: L.link('/treatments/' + tr.slug) }),

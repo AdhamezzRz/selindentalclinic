@@ -361,7 +361,13 @@ const treatments = [
 const VIEW = {
   smile: { en: 'Smile view', ar: 'صورة الابتسامة' },
   retracted: { en: 'Close-up view', ar: 'صورة مقربة' },
+  face: { en: 'Full-face view', ar: 'صورة الوجه' },
 };
+// Full-face pairs: shown in the Cases gallery only (before photos stay inside the gallery).
+const f = (n, patient, title, note) => ({
+  id: `face-${n}`, patient, view: 'face', viewLabel: VIEW.face, treatment: 'porcelain-veneers',
+  title, note, before: `/media/cases/face-${n}-before.jpg`, after: `/media/cases/face-${n}-after.jpg`,
+});
 const c = (n, patient, view, title, note, treatment = 'porcelain-veneers') => ({
   id: `case-${n}`,
   patient,
@@ -375,6 +381,14 @@ const c = (n, patient, view, title, note, treatment = 'porcelain-veneers') => ({
 });
 
 const cases = [
+  f('01', 'A', { en: 'A confident new smile', ar: 'ابتسامة جديدة واثقة' },
+    { en: 'Crowded, uneven teeth → a bright, harmonious smile', ar: 'أسنان متزاحمة وغير متساوية ← ابتسامة مشرقة ومتناغمة' }),
+  f('02', 'B', { en: 'Radiant and natural', ar: 'إشراقة طبيعية' },
+    { en: 'Crowding and stains → straight, luminous veneers', ar: 'تزاحم وتصبغات ← فينير مستقيم ومتوهج' }),
+  f('03', 'C', { en: 'A fuller, brighter smile', ar: 'ابتسامة أكثر امتلاءً وإشراقًا' },
+    { en: 'Yellowed, uneven teeth → an even, glowing smile', ar: 'أسنان مصفرة وغير متساوية ← ابتسامة متساوية ومتوهجة' }),
+  f('04', 'D', { en: 'Balance restored', ar: 'توازن مستعاد' },
+    { en: 'Short, worn teeth → longer, balanced veneers', ar: 'أسنان قصيرة ومتآكلة ← فينير أطول ومتوازن' }),
   c('01', 'A', 'smile',
     { en: 'Full smile makeover', ar: 'تجميل كامل للابتسامة' },
     { en: 'Crowded, uneven teeth → an even, luminous smile', ar: 'أسنان متزاحمة وغير متساوية ← ابتسامة متناسقة ومشرقة' }),

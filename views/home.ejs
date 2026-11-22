@@ -85,7 +85,7 @@
       </div>
     </div>
     <div class="cases-rail" data-rail>
-      <% content.cases.filter(c => c.view !== 'retracted').forEach(function (c) { %><%- include('partials/case', { c }) %><% }) %>
+      <% content.cases.filter(c => c.view === 'smile').forEach(function (c) { %><%- include('partials/case', { c }) %><% }) %>
     </div>
     <div class="cases-foot">
       <p class="fine"><span class="spark"></span><%= content.cases.some(c => c.sim && !(c.before && c.after)) ? s('cases.simNote') : s('cases.realNote') %></p>

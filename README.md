@@ -62,7 +62,7 @@ npm start            # http://localhost:3000
 1. Put matching photos in `public/media/cases/`, e.g. `case-01-before.jpg` and `case-01-after.jpg`. Use the same size and framing, ideally 4:3.
 2. In `src/content.js → cases`, set `before: '/media/cases/case-01-before.jpg'`, `after: '/media/cases/case-01-after.jpg'` and remove `sim`.
 
-The site currently shows **9 real SÉLIN veneer cases** (5 patients; smile and close-up views), cropped to the mouth only, with no names or metadata. Make sure every patient has consented to their photos being published.
+The site shows **real SÉLIN cases**: 4 full-face before/after pairs (Cases gallery only) and 9 smile / close-up pairs. The homepage shows only *after* portraits (`public/media/smiles/`, picked up automatically) and smile close-ups. No names or metadata. Make sure every patient has consented to their photos being published.
 
 ### Doctor portraits
 
