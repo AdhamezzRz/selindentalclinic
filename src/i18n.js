@@ -233,6 +233,7 @@ const ui = {
 
   'footer.line': { en: 'Darkness creates the contrast that makes the light glow.', ar: 'الظلام هو ما يجعل الضوء يتوهج.' },
   'footer.rights': { en: 'All rights reserved.', ar: 'جميع الحقوق محفوظة.' },
+  'footer.powered': { en: 'Powered by', ar: 'تطوير' },
   'footer.top': { en: 'Back to top', ar: 'للأعلى' },
 
   'nf.title': { en: 'Lost in the night sky.', ar: 'تُهت في سماء الليل.' },

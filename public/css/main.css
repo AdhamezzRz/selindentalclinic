@@ -1245,3 +1245,5 @@ img.mark { width: 100%; height: auto; display: block; }
   .story-tabs::-webkit-scrollbar { display: none; }
   .story-tab { flex: none; scroll-snap-align: start; }
 }
+.footer-credit a { color: var(--champagne); }
+@media (min-width: 861px) { .footer { padding-bottom: 104px; } }
