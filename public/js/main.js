@@ -281,13 +281,23 @@
 
     let tapTimer = null;
     reel.addEventListener('click', (e) => {
-      if (!mqPhone.matches) { openLB(); return; }
       const r = reel.getBoundingClientRect();
       const x = e.clientX - r.left, y = e.clientY - r.top;
       if (tapTimer) { clearTimeout(tapTimer); tapTimer = null; burst(x, y); return; }
       tapTimer = setTimeout(() => { tapTimer = null; setSound(!soundOn); }, 260);
     });
-    reel.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLB(); } });
+    reel.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSound(!soundOn); } });
+
+    // ambient glow behind the reel (desktop): same film, blurred, kept in sync
+    const amb = $('[data-ambient]');
+    if (amb) {
+      amb.muted = true;
+      video.addEventListener('timeupdate', () => {
+        if (Math.abs(amb.currentTime - video.currentTime) > 0.35) amb.currentTime = video.currentTime;
+      });
+      video.addEventListener('play', () => amb.play().catch(() => {}));
+      video.addEventListener('pause', () => amb.pause());
+    }
   }
 
   /* share */

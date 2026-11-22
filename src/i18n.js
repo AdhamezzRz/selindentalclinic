@@ -72,6 +72,7 @@ const ui = {
   'reel.share': { en: 'Share', ar: 'مشاركة' },
   'reel.copied': { en: 'Link copied', ar: 'تم نسخ الرابط' },
   'reel.hint': { en: 'Tap for sound · double-tap to shine', ar: 'المس للصوت · المس مرتين للتألق' },
+  'reel.hint.pc': { en: 'Click for sound · double-click to shine', ar: 'انقر للصوت · انقر مرتين للتألق' },
   'dock.call': { en: 'Call', ar: 'اتصال' },
   'hero.scroll': { en: 'Scroll to enter', ar: 'مرر للدخول' },
 

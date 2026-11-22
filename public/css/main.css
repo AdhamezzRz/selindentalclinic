@@ -1073,3 +1073,100 @@ img.mark { width: 100%; height: auto; display: block; }
   .logo--sm { width: 112px; }
   .thero, .post-hero, .book { padding-top: calc(var(--nav-h) + 40px); }
 }
+
+
+/* ════════════ Desktop reel hero (≥861px) — same experience as phones ════════════ */
+.reel-ambient { display: none; }
+.hint-mouse { display: none; }
+@media (hover: hover) and (pointer: fine) { .hint-touch { display: none; } .hint-mouse { display: inline; } }
+
+@media (min-width: 861px) {
+  .hero { min-height: 100svh; height: 100svh; padding: 0; justify-content: flex-end; overflow: hidden; }
+  .hero .stars, .hero-foot { display: none; }
+  .reel-ambient { display: block; position: absolute; inset: -12%; z-index: 0; pointer-events: none; }
+  .reel-ambient video { width: 100%; height: 100%; object-fit: cover; filter: blur(64px) saturate(1.25) brightness(.5); transform: scale(1.1); }
+  .reel-ambient::after { content: ''; position: absolute; inset: 0;
+    background: radial-gradient(60% 70% at 50% 50%, transparent 0%, rgba(15, 21, 32, .35) 60%, rgba(15, 21, 32, .85) 100%),
+                linear-gradient(90deg, rgba(15, 21, 32, .82) 0%, rgba(15, 21, 32, .2) 38%, rgba(15, 21, 32, .2) 62%, rgba(15, 21, 32, .6) 100%); }
+
+  .hero-grid { position: absolute; inset: 0; display: block; padding: 0; max-width: none; z-index: 1; }
+  .hero-visual { --reel-h: calc(100svh - var(--nav-h) - 40px);
+    position: absolute; top: calc(var(--nav-h) + 12px); height: var(--reel-h); width: calc(var(--reel-h) * 9 / 16);
+    right: calc(var(--gutter) + 96px); left: auto; margin: 0; justify-self: stretch; z-index: 1; }
+  [dir="rtl"] .hero-visual { right: auto; left: calc(var(--gutter) + 96px); }
+  .hero-arch { position: absolute; inset: 0; aspect-ratio: auto; border-radius: 22px; cursor: pointer;
+    box-shadow: 0 0 0 1px rgba(245, 241, 235, .08), 0 60px 140px -40px rgba(0, 0, 0, .9); }
+  .hero-arch::after { display: none; }
+  .hero-video { transform: none; }
+  .reel-shade { display: block; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+    background: linear-gradient(180deg, rgba(15, 21, 32, .5) 0%, rgba(15, 21, 32, 0) 16%, rgba(15, 21, 32, 0) 84%, rgba(15, 21, 32, .35) 100%); }
+
+  .reel-ui { display: block; position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+  .reel-ui > * { pointer-events: auto; }
+  .reel-progress { position: absolute; top: 12px; left: 14px; right: 14px; height: 2px; border-radius: 2px; background: rgba(245, 241, 235, .25); overflow: hidden; }
+  .reel-progress i { position: absolute; inset: 0; background: var(--pearl); transform-origin: left; transform: scaleX(0); }
+  .reel-sound { position: absolute; top: 26px; right: 14px; width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; color: var(--pearl); background: rgba(15, 21, 32, .4); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(245, 241, 235, .16); transition: background .3s; }
+  .reel-sound:hover { background: rgba(15, 21, 32, .65); }
+  .reel-sound svg { width: 20px; height: 20px; grid-area: 1 / 1; transition: opacity .25s, transform .35s var(--ease); }
+  .reel-sound .ico-on { opacity: 0; transform: scale(.6); }
+  .reel-sound.is-on .ico-on { opacity: 1; transform: none; }
+  .reel-sound.is-on .ico-off { opacity: 0; transform: scale(.6); }
+  .reel-hint { position: absolute; top: 36px; right: 66px; font-size: 11.5px; color: rgba(245, 241, 235, .9); text-shadow: 0 1px 8px rgba(0, 0, 0, .6); transition: opacity .5s; animation: hintfade 6s 5s forwards; white-space: nowrap; }
+  .reel-hint.is-gone { opacity: 0; }
+  .reel-rail { position: absolute; left: calc(100% + 22px); bottom: 10px; display: flex; flex-direction: column; gap: 20px; align-items: center; }
+  [dir="rtl"] .reel-rail { left: auto; right: calc(100% + 22px); }
+  .reel-act { display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--pearl); font: inherit; }
+  .reel-act b { font-size: 11px; font-weight: 500; letter-spacing: .02em; }
+  .reel-ico { width: 50px; height: 50px; border-radius: 15px; display: grid; place-items: center; background: rgba(245, 241, 235, .07); border: 1px solid rgba(245, 241, 235, .14); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: transform .35s var(--ease), background .3s, color .3s; }
+  .reel-ico svg { width: 22px; height: 22px; }
+  .reel-ico--gold { color: var(--champagne); }
+  .reel-act:hover .reel-ico { transform: translateY(-3px); background: var(--champagne); color: var(--lunar); }
+
+  .hero-copy { position: absolute; left: var(--gutter); bottom: clamp(40px, 7vh, 72px); z-index: 2;
+    width: min(620px, calc(100% - var(--gutter) * 2 - var(--reel-w, 0px) - 180px)); }
+  [dir="rtl"] .hero-copy { left: auto; right: var(--gutter); }
+  .reel-handle { display: flex; align-items: center; gap: 12px; margin-bottom: 26px; }
+  .reel-avatar { width: 44px; height: 44px; flex: none; border-radius: 13px; background: var(--lunar); border: 1px solid rgba(196, 176, 138, .5); display: grid; place-items: center; padding: 7px 10px; }
+  .reel-avatar .mark { width: auto; height: 100%; }
+  .reel-name { display: flex; flex-direction: column; font-size: 14px; font-weight: 600; line-height: 1.3; color: var(--pearl); }
+  .reel-name small { font-size: 12px; font-weight: 400; opacity: .65; }
+  .reel-follow { margin-inline-start: 6px; padding: 7px 14px; border-radius: 10px; border: 1px solid rgba(245, 241, 235, .4); font-size: 12.5px; font-weight: 500; color: var(--pearl); transition: background .3s, color .3s, border-color .3s; }
+  .reel-follow:hover { background: var(--champagne); color: var(--lunar); border-color: var(--champagne); }
+  .hero .eyebrow { display: none; }
+  .hero-title { font-size: clamp(52px, 5.6vw, 96px); margin-bottom: 22px; }
+  .hero-sub { max-width: 42ch; margin-bottom: 30px; }
+
+  /* the reel is the film now — the scroll-film section would repeat it */
+  .film { display: none; }
+
+  /* same app-like dock as phones, as a compact floating pill */
+  .dock { display: grid; grid-template-columns: auto auto auto; gap: 6px; position: fixed; left: 50%; bottom: 22px; z-index: 90; padding: 6px; border-radius: 20px;
+    background: rgba(15, 21, 32, .82); backdrop-filter: blur(18px) saturate(1.3); -webkit-backdrop-filter: blur(18px) saturate(1.3); border: 1px solid rgba(245, 241, 235, .12);
+    box-shadow: 0 18px 40px -12px rgba(0, 0, 0, .6); transform: translate(-50%, 160%); transition: transform .6s var(--ease); }
+  .dock.is-on { transform: translate(-50%, 0); }
+  .dock a { display: flex; align-items: center; justify-content: center; gap: 9px; height: 48px; padding: 0 22px; border-radius: 15px; font-size: 13px; font-weight: 500; color: var(--pearl); transition: background .3s; }
+  .dock svg { width: 18px; height: 18px; flex: none; }
+  .dock-main { background: var(--champagne); color: var(--lunar) !important; }
+  .dock-btn { background: rgba(245, 241, 235, .06); }
+  .dock-btn:hover { background: rgba(245, 241, 235, .14); }
+  .wa-float { display: none; }
+}
+@media (min-width: 1280px) {
+  /* centred like a reel on a big screen, caption on the left */
+  .hero-visual { right: auto; left: 50%; transform: translateX(-50%); }
+  [dir="rtl"] .hero-visual { left: 50%; }
+  .hero-copy { width: min(560px, calc(50% - var(--reel-h, 760px) * 9 / 32 - var(--gutter) - 40px)); min-width: 380px; }
+}
+@media (min-width: 861px) {
+  .hero { --reel-h: calc(100svh - var(--nav-h) - 40px); --reel-w: calc(var(--reel-h) * 9 / 16); }
+  .hero-visual { height: var(--reel-h); width: var(--reel-w); }
+  .hero-copy { width: calc(100% - var(--gutter) * 2 - var(--reel-w) - 96px - 48px); max-width: 600px; min-width: 0; }
+  .hero-title { font-size: clamp(42px, 4vw, 74px); }
+  .hero-title .line:nth-child(2) { padding-inline-start: clamp(20px, 3vw, 56px); }
+  .hero-sub { font-size: 15px; }
+}
+@media (min-width: 1280px) {
+  .hero-copy { width: calc(50% - var(--reel-w) / 2 - var(--gutter) - 48px); min-width: 0; max-width: 560px; }
+}
+@media (min-width: 861px) { [lang="ar"] .hero-title { font-size: clamp(40px, 3.6vw, 66px); } }
+@media (max-width: 860px) { [lang="ar"] .hero-title { font-size: clamp(36px, 10vw, 50px); } }
