@@ -191,14 +191,14 @@ function buildGraph(o) {
       graph.push({
         '@type': 'VideoObject',
         '@id': BASE() + '/#' + st.id,
-        name: lang === 'ar' ? 'قصة ضيفة: فينير البورسلين في سيلين' : 'Guest story: porcelain veneers at SÉLIN Dental Aesthetics',
+        name: (lang === 'ar' ? 'قصة ' : 'Guest story — ') + pick(st.name, lang) + (lang === 'ar' ? ': فينير البورسلين في سيلين' : ': porcelain veneers at SÉLIN Dental Aesthetics'),
         description: pick(st.chapters[st.chapters.length - 1].quote, lang),
         thumbnailUrl: abs(st.poster),
         contentUrl: abs(st.video),
         uploadDate: st.uploadDate,
-        duration: `PT${Math.floor(st.duration / 60)}M${st.duration % 60}S`,
-        inLanguage: 'ar',
-        transcript: st.transcript.ar,
+        duration: `PT${Math.floor(st.duration / 60)}M${Math.round(st.duration % 60)}S`,
+        inLanguage: st.lang || 'ar',
+        transcript: st.lang === 'en' ? st.transcript.en : st.transcript.ar,
         publisher: { '@id': ID.clinic() },
         about: { '@id': ID.treatment(st.treatment) },
         hasPart: st.chapters.map((c, i) => ({

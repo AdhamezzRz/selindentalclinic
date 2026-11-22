@@ -300,38 +300,55 @@
     }
   }
 
-  /* ── Guest story: video + chapters ── */
-  $$('[data-story]').forEach((sec) => {
-    const v = $('[data-story-video]', sec);
-    const frame = $('[data-story-frame]', sec);
-    const playBtn = $('[data-story-play]', sec);
-    const prog = $('[data-story-progress]', sec);
-    const chapters = $$('[data-chapter]', sec);
-    const times = chapters.map((c) => parseFloat(c.dataset.chapter));
-    const start = (t) => {
-      if (typeof t === 'number') { v.preload = 'auto'; v.currentTime = t; }
-      const hero = $('.hero-video'); if (hero && !hero.muted) hero.muted = true;
-      v.muted = false;
-      v.play().catch(() => {});
-    };
-    v.addEventListener('play', () => frame.classList.add('is-playing'));
-    v.addEventListener('pause', () => frame.classList.remove('is-playing'));
-    v.addEventListener('ended', () => frame.classList.remove('is-playing'));
-    playBtn.addEventListener('click', (e) => { e.stopPropagation(); start(); });
-    frame.addEventListener('click', () => { if (v.paused) start(); else v.pause(); });
-    chapters.forEach((c, i) => c.addEventListener('click', () => start(times[i] + 0.01)));
-    v.addEventListener('timeupdate', () => {
-      const ct = v.currentTime;
-      if (prog && v.duration) prog.style.transform = `scaleX(${(ct / v.duration).toFixed(4)})`;
-      let idx = 0;
-      times.forEach((tt, i) => { if (ct >= tt - 0.05) idx = i; });
-      chapters.forEach((c, i) => {
-        c.classList.toggle('is-active', i === idx);
-        const end = times[i + 1] ?? (v.duration || ct + 1);
-        const p = i < idx ? 1 : i > idx ? 0 : Math.min(1, Math.max(0, (ct - times[i]) / (end - times[i])));
-        const bar = $('.ch-bar i', c); if (bar) bar.style.transform = `scaleX(${p.toFixed(3)})`;
+  /* ── Guest stories: tabs + video + chapters ── */
+  $$('[data-stories]').forEach((root) => {
+    const panels = $$('[data-story]', root);
+    panels.forEach((sec) => {
+      const v = $('[data-story-video]', sec);
+      const frame = $('[data-story-frame]', sec);
+      const playBtn = $('[data-story-play]', sec);
+      const prog = $('[data-story-progress]', sec);
+      const chapters = $$('[data-chapter]', sec);
+      const times = chapters.map((c) => parseFloat(c.dataset.chapter));
+      const start = (t) => {
+        panels.forEach((o) => { const ov = $('[data-story-video]', o); if (ov !== v) ov.pause(); });
+        if (typeof t === 'number') { v.preload = 'auto'; v.currentTime = t; }
+        const hero = $('.hero-video'); if (hero && !hero.muted) hero.muted = true;
+        v.muted = false;
+        v.play().catch(() => {});
+      };
+      v.addEventListener('play', () => frame.classList.add('is-playing'));
+      v.addEventListener('pause', () => frame.classList.remove('is-playing'));
+      v.addEventListener('ended', () => frame.classList.remove('is-playing'));
+      playBtn.addEventListener('click', (e) => { e.stopPropagation(); start(); });
+      frame.addEventListener('click', () => { if (v.paused) start(); else v.pause(); });
+      chapters.forEach((c, i) => c.addEventListener('click', () => start(times[i] + 0.01)));
+      v.addEventListener('timeupdate', () => {
+        const ct = v.currentTime;
+        if (prog && v.duration) prog.style.transform = `scaleX(${(ct / v.duration).toFixed(4)})`;
+        let idx = 0;
+        times.forEach((tt, i) => { if (ct >= tt - 0.05) idx = i; });
+        chapters.forEach((c, i) => {
+          c.classList.toggle('is-active', i === idx);
+          const end = times[i + 1] ?? (v.duration || ct + 1);
+          const p = i < idx ? 1 : i > idx ? 0 : Math.min(1, Math.max(0, (ct - times[i]) / (end - times[i])));
+          const bar = $('.ch-bar i', c); if (bar) bar.style.transform = `scaleX(${p.toFixed(3)})`;
+        });
       });
     });
+
+    const tabs = $$('[data-story-tab]', root);
+    const show = (id) => {
+      tabs.forEach((t) => { const on = t.dataset.storyTab === id; t.classList.toggle('is-on', on); t.setAttribute('aria-selected', String(on)); });
+      panels.forEach((p) => {
+        const on = p.id === id;
+        if (!on) $('[data-story-video]', p).pause();
+        p.hidden = !on;
+        if (on && hasGSAP && !reduced) gsap.fromTo(p, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' });
+      });
+      ST && ST.refresh();
+    };
+    tabs.forEach((t) => t.addEventListener('click', () => show(t.dataset.storyTab)));
   });
 
   /* share */

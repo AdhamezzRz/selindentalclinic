@@ -525,7 +525,70 @@ const smiles = (() => {
  */
 const stories = [
   {
+    id: 'story-02',
+    name: { en: 'Nour', ar: 'نور' },
+    tab: { en: 'Flew in from the US', ar: 'جت من أمريكا' },
+    lang: 'en',
+    video: '/media/stories/story-02.mp4',
+    poster: '/media/stories/story-02.jpg',
+    duration: 90,
+    uploadDate: '2026-11-22',
+    treatment: 'porcelain-veneers',
+    headline: { en: '“Transformed 180 degrees.”', ar: '«اتغيّرت 180 درجة.»' },
+    guest: { en: 'Nour · Porcelain veneers', ar: 'نور · فينير البورسلين' },
+    chapters: [
+      {
+        t: 1.5,
+        label: { en: 'From the US', ar: 'من أمريكا' },
+        quote: {
+          en: 'I travelled all the way from the United States, because I was very insecure with my smile. I heard about Dr. Walid and the recommendations about him.',
+          ar: 'سافرت مخصوص من الولايات المتحدة، لأني كنت مش واثقة خالص من ابتسامتي. سمعت عن دكتور وليد وعن الترشيحات عنه.',
+        },
+      },
+      {
+        t: 10,
+        label: { en: 'The plan', ar: 'الخطة' },
+        quote: {
+          en: 'He told me the best thing for my age and my case is veneers. Dr. Walid and the entire team exceeded my expectations.',
+          ar: 'قالي إن أنسب حاجة لسني ولحالتي هي الفينير. دكتور وليد والفريق كله فاقوا توقعاتي.',
+        },
+      },
+      {
+        t: 25,
+        label: { en: 'Under a week', ar: 'أقل من أسبوع' },
+        quote: {
+          en: 'From the moment I walked in, everything felt amazing, comfortable and painless. What surprised me most — the process was done in less than a week.',
+          ar: 'من أول ما دخلت كل حاجة كانت رائعة ومريحة ومن غير ألم. وأكتر حاجة فاجأتني إن كل حاجة خلصت في أقل من أسبوع.',
+        },
+      },
+      {
+        t: 41.5,
+        label: { en: '180°', ar: '180°' },
+        quote: {
+          en: 'Honestly, I was transformed 180 degrees. I still can’t believe these are my teeth — everything looks natural, white, symmetrical.',
+          ar: 'بصراحة اتغيّرت 180 درجة. لسه مش مصدّقة إن دي سناني — كل حاجة طبيعية وبيضا ومتناسقة.',
+        },
+      },
+      {
+        t: 67,
+        label: { en: 'Don’t be scared', ar: 'ما تخافوش' },
+        quote: {
+          en: 'Don’t be scared — come right in the door. They’re like family to me now. I definitely recommend Dr. Walid Zaki.',
+          ar: 'ما تخافوش، ادخلوا على طول. بقوا زي عيلتي دلوقتي. أنصح جدًا بدكتور وليد زكي.',
+        },
+      },
+    ],
+    transcript: {
+      en: 'Hi, my name is Nour. I’ve travelled all the way from the United States, because I was very insecure with my smile and the overall appearance. I heard about Doctor Walid and the recommendations about him, and he told me the best thing for my age and for my case is to do veneers. Doctor Walid and the entire team and staff have exceeded my expectations. I’ve always been a little insecure with my smile — the appearance, the way that they look — so since the moment I’ve walked in, everything’s felt so amazing and comfortable, painless. And what surprised me the most is the process was done in less than a week. Even now, looking at my smile, I can’t believe that this is me. There was no pain during the treatment; everything was done smoothly, quickly — and honestly, I was transformed 180 degrees. It’s been amazing. Look at me now. I still can’t believe that these are my teeth. Everything looks natural, white, symmetrical. If you feel like you’re insecure about your smile, I definitely would recommend coming here. They’re quick, loving, professional — very well, clean work, and as you can see, I’m very happy with the results. Don’t be scared — come right in the door. They’re like family to me now, and everything’s been beyond my expectations. I thought I would be somewhere, but this is even better than where I thought I would be. So definitely recommend Doctor Walid Zaki.',
+      ar: 'أهلًا، أنا نور. سافرت مخصوص من الولايات المتحدة، لأني كنت مش واثقة من ابتسامتي ومن شكلها عمومًا. سمعت عن دكتور وليد والترشيحات عنه، وقالي إن أنسب حاجة لسني ولحالتي هي الفينير. دكتور وليد والفريق كله فاقوا توقعاتي. طول عمري كنت مش واثقة من ابتسامتي وشكل سناني، ومن أول ما دخلت كل حاجة كانت رائعة ومريحة ومن غير ألم. وأكتر حاجة فاجأتني إن الموضوع كله خلص في أقل من أسبوع. لحد دلوقتي وأنا ببص على ابتسامتي مش مصدّقة إن دي أنا. ما كانش في أي ألم أثناء العلاج، وكل حاجة خلصت بسلاسة وبسرعة — وبصراحة اتغيّرت 180 درجة. بصوا عليّا دلوقتي. لسه مش مصدّقة إن دي سناني. كل حاجة طبيعية وبيضا ومتناسقة. لو حاسس إنك مش واثق من ابتسامتك، أنصحك جدًا تيجي هنا. سريعين وحنينين ومحترفين، وشغلهم نظيف جدًا، وزي ما انتوا شايفين أنا مبسوطة جدًا بالنتيجة. ما تخافوش، ادخلوا على طول — بقوا زي عيلتي دلوقتي، وكل حاجة كانت فوق توقعاتي. أنصح جدًا بدكتور وليد زكي.',
+    },
+    transcriptNote: { en: 'Original in English · Arabic translation below', ar: 'النص الأصلي بالإنجليزية · مع الترجمة العربية' },
+  },
+  {
     id: 'story-01',
+    name: { en: 'SÉLIN guest', ar: 'ضيفة سيلين' },
+    tab: { en: 'Porcelain veneers', ar: 'فينير البورسلين' },
+    lang: 'ar',
     video: '/media/stories/story-01.mp4',
     poster: '/media/stories/story-01.jpg',
     duration: 94,
@@ -570,6 +633,49 @@ const stories = [
     transcript: {
       ar: 'أنا جيت لدكتور محمد ودكتور وليد عشان أعمل veneers، عشان دي أكتر حاجة كنت بكرهها في حياتي، يعني سناني. للأسف ما كنتش بضحك في أي صور، حتى لما أجي أضحك بغطي بُقي. دكتور محمد بعتلي على واتساب options، حتى الألوان كنا بننقّي مع بعض، إيه حاجة حاسة هتليق على وشي أكتر. وطبعًا الدكتور فاهم أكتر مني، فقالي مثلًا: الـ skintone بتاعتك اللون ده هيليق عليه أكتر. بصراحة دي بالنسبة لي كانت أحلى حاجة. بعد ما ركّبت، كل حاجة صغيرة كانت مضايقاني غيّرناها. وفي حاجة برضه كانت مضايقة الدكتور، أنا مش شايفاها، بس هو لدرجة قالي: لا، أنا في حاجة مضايقاني — وأكّد عليها، وجيت تاني عشان أغيّرها. وبصراحة الأمانة دي حاجة بالنسبة لي مهمة أوي. أنا ما لاحظتهاش، فالدكتور هو اللي أصرّ إني أجي وأعيد عليها. فبصراحة الـ process لذيذ قوي. فحاسة إنهم بصراحة غيّرولي حياتي، من غير ما أكون over. وعلى فكرة، أنا ما قولتلكمش كده، بس أنا لما روّحت عيّطت من كتر ما كنت متأثرة، من إني حاسة إني بقيت واثقة من نفسي قوي، وممكن أضحك عادي مش مكسوفة. فأحلى أحلى قرار خدته. ما تخيّلتش إن الـ result هتبسطني للدرجة دي، واتبسطت أوي أوي أوي، الحمد لله. وكل حد يسألني… دكتور وليد ودكتور محمد في سيلين دنتال إيستاتيكس.',
       en: 'I came to Dr. Mohammed and Dr. Walid to get veneers, because my teeth were the thing I hated most in my life. Sadly, I never smiled in any photos — even when I laughed, I would cover my mouth. Dr. Mohammed sent me options on WhatsApp; we even chose the colours together — whatever I felt would suit my face best. And of course the doctor understands more than I do, so he told me, for example: with your skin tone, this shade will suit you better. Honestly, for me, that was the best part. After the fitting, any small thing that bothered me, we changed. There was also something bothering the doctor that I couldn’t even see — he insisted on it, and I came back to have it changed. Honestly, that integrity matters so much to me. I hadn’t noticed it; the doctor is the one who insisted I come back and redo it. The whole process was genuinely lovely. I feel they truly changed my life — without exaggerating. And I haven’t told you this, but when I got home I cried, I was so moved — I had become so confident, I could laugh normally without being embarrassed. It’s the best, best decision I have ever made. I never imagined the result would make me this happy. I’m so, so happy, thank God. And everyone who asks me… Dr. Walid and Dr. Mohammed at SÉLIN Dental Aesthetics.',
+    },
+  },
+  {
+    id: 'story-03',
+    name: { en: 'Mariam', ar: 'مريم' },
+    tab: { en: 'Found us through her sister', ar: 'عرفتنا من أختها' },
+    lang: 'ar',
+    video: '/media/stories/story-03.mp4',
+    poster: '/media/stories/story-03.jpg',
+    duration: 57.6,
+    uploadDate: '2026-11-22',
+    treatment: 'porcelain-veneers',
+    headline: { en: '“Now I’m really confident.”', ar: '«دلوقتي بقيت confident جدًا.»' },
+    guest: { en: 'Mariam · Porcelain veneers', ar: 'مريم · فينير البورسلين' },
+    chapters: [
+      {
+        t: 2,
+        label: { en: 'Through her sister', ar: 'عن طريق أختها' },
+        quote: {
+          en: 'I found the clinic through my sister — she’s the one who introduced me to Dr. Walid. Honestly, the experience was wonderful.',
+          ar: 'أنا عرفت العيادة من أختي، وهي اللي عرّفتني على دكتور وليد. بصراحة الـ experience كانت تحفة.',
+        },
+      },
+      {
+        t: 10.5,
+        label: { en: 'Before', ar: 'قبل' },
+        quote: {
+          en: 'I’d wanted to fix my teeth for so long. I wasn’t confident laughing or being around people — whenever I laughed, I’d always cover my mouth.',
+          ar: 'كان من زمان قوي نفسي أعمل سناني، عشان كنت not confident إني أضحك وأتعامل، ولما باجي أضحك دايمًا بغطي بُقي.',
+        },
+      },
+      {
+        t: 23.5,
+        label: { en: 'Now', ar: 'دلوقتي' },
+        quote: {
+          en: 'But now I’ve become really confident. Honestly — the whole experience was amazing.',
+          ar: 'بس دلوقتي بقيت confident جدًا. وبصراحة الـ experience كلها كانت تحفة.',
+        },
+      },
+    ],
+    transcript: {
+      ar: 'هاي، أنا مريم. أنا عرفت المكان — أو العيادة يعني — من أختي، وهي اللي عرّفتني على دكتور وليد. بصراحة الـ experience كانت تحفة، عشان كان من زمان قوي نفسي أعمل سناني، عشان كان عندي مشكلة إني not confident في موضوع إني أضحك وإني أتعامل، ولما باجي أضحك دايمًا بغطي بُقي. بس دلوقتي بقيت confident جدًا. وغير إن طبعًا كان عندي مشاكل في سناني من وأنا صغيرة، وكنت بحاول أعملها. بصراحة، الـ experience كلها كانت تحفة.',
+      en: 'Hi, I’m Mariam. I found the place — the clinic — through my sister; she’s the one who introduced me to Dr. Walid. Honestly, the experience was wonderful. I’d wanted to fix my teeth for a very long time, because I wasn’t confident when it came to laughing and being around people — whenever I laughed, I’d always cover my mouth. But now I’ve become really confident. And of course, I’d had issues with my teeth since I was young and had been wanting to get them done. Honestly, the whole experience was amazing.',
     },
   },
 ];

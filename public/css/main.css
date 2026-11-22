@@ -1221,3 +1221,27 @@ img.mark { width: 100%; height: auto; display: block; }
   .story-media { max-width: 360px; width: 86%; margin-inline: auto; }
   .story-headline { margin-bottom: 22px; }
 }
+
+
+/* ════════════ Guest stories — tabs ════════════ */
+.story-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 28px; flex-wrap: wrap; margin-bottom: clamp(36px, 4vw, 60px); }
+.story-tabs { display: flex; gap: 10px; flex-wrap: wrap; }
+.story-tab { display: flex; align-items: center; gap: 12px; padding: 8px 18px 8px 8px; border-radius: 18px; border: 1px solid var(--line-light); background: rgba(255, 255, 255, .35); color: var(--lunar); text-align: start; transition: background .4s var(--ease), border-color .4s, box-shadow .4s; }
+[dir="rtl"] .story-tab { padding: 8px 8px 8px 18px; }
+.story-tab img { width: 48px; height: 48px; border-radius: 13px; object-fit: cover; object-position: 50% 25%; flex: none; }
+.story-tab span { display: flex; flex-direction: column; line-height: 1.25; }
+.story-tab strong { font-size: 14px; font-weight: 600; }
+.story-tab small { font-size: 12px; opacity: .6; }
+.story-tab:hover { border-color: var(--clay); }
+.story-tab.is-on { background: var(--lunar); color: var(--pearl); border-color: var(--lunar); box-shadow: 0 16px 34px -18px rgba(15, 21, 32, .7); }
+.story-tab.is-on small { opacity: .7; }
+.story-panel[hidden] { display: none; }
+.story-copy .story-headline { margin-top: 0; }
+.tr-orig { font-size: 15.5px; line-height: 1.8; margin-bottom: 16px; }
+.tr-trans { opacity: .78; font-size: 15px; padding-bottom: 20px; }
+
+@media (max-width: 860px) {
+  .story-tabs { flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: calc(var(--gutter) * -1); padding: 2px var(--gutter) 6px; width: calc(100% + var(--gutter) * 2); scrollbar-width: none; }
+  .story-tabs::-webkit-scrollbar { display: none; }
+  .story-tab { flex: none; scroll-snap-align: start; }
+}
