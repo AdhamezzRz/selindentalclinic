@@ -521,20 +521,26 @@
   // Loader (home only)
   const loader = $('.loader');
   if (loader) {
+    // "Gentle light": a soft moonbeam sweeps across and reveals the wordmark,
+    // then the night parts like a curtain to reveal the site.
     const seen = store.get('selin-seen');
-    const dur = seen ? 0.6 : 1.6;
-    const count = $('.loader-count', loader);
-    const o = { v: 0 };
+    const dur = seen ? 0.9 : 2;
+    const logo = $('.loader-logo', loader);
+    const dir = isRTL ? -1 : 1;
     lenis && lenis.stop();
+    gsap.set(logo, { '--r': '-25%' });
     const tl = gsap.timeline();
-    tl.to(o, { v: 100, duration: dur, ease: 'power2.inOut', onUpdate: () => {
-        count.textContent = Math.round(o.v);
-      } }, 0)
-      .from('.loader-mark', { opacity: 0, y: 12, duration: dur * 0.6, ease }, 0)
-      .to(loader, { clipPath: 'circle(0% at 50% 50%)', duration: 1.2, ease: 'expo.inOut' }, dur + 0.15)
-      .add(() => { loader.remove(); lenis && lenis.start(); store.set('selin-seen', '1'); }, dur + 1.3)
-      .add(intro(), dur + 0.55);
-    gsap.set(loader, { clipPath: 'circle(150% at 50% 50%)' });
+    tl.to(logo, { '--r': '125%', duration: dur, ease: 'power2.inOut' }, 0)
+      .fromTo('.loader-word', { scale: 1.04, filter: 'blur(6px)' }, { scale: 1, filter: 'blur(0px)', duration: dur, ease: 'power3.out' }, 0)
+      .from('.loader-line', { opacity: 0, y: 12, letterSpacing: '0.5em', duration: dur * 0.8, ease: 'power3.out' }, dur * 0.35)
+      .fromTo('.loader-bar i', { scaleX: 0 }, { scaleX: 1, duration: dur, ease: 'power2.inOut' }, 0)
+      .to('.loader-stage', { opacity: 0, y: -14, duration: 0.5, ease: 'power2.in' }, dur + 0.2)
+      .fromTo('.loader-seam', { scaleX: 0, opacity: 1 }, { scaleX: 1, duration: 0.55, ease: 'expo.inOut' }, dur + 0.2)
+      .to('.loader-seam', { opacity: 0, scaleY: 30, duration: 0.9, ease: 'expo.in' }, dur + 0.7)
+      .to('.loader-panel--top', { yPercent: -101, duration: 1.15, ease: 'expo.inOut' }, dur + 0.7)
+      .to('.loader-panel--bot', { yPercent: 101, duration: 1.15, ease: 'expo.inOut' }, dur + 0.7)
+      .add(() => { loader.remove(); lenis && lenis.start(); store.set('selin-seen', '1'); }, dur + 1.9)
+      .add(intro(), dur + 0.95);
   } else {
     intro();
   }

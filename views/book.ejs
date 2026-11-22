@@ -82,4 +82,21 @@
 </section>
 <% } %>
 
+<section class="faq sec sec--pearl">
+  <div class="wrap faq-grid">
+    <div>
+      <p class="eyebrow"><span class="spark"></span><%= s('faq.label') %></p>
+      <h2 class="display h2 split"><%= s('faq.title') %></h2>
+    </div>
+    <div class="faq-list">
+      <% content.faq.forEach(function (f) { %>
+        <details class="faq-item reveal">
+          <summary><span><%= t(f.q) %></span><i aria-hidden="true"></i></summary>
+          <div class="faq-a"><p><%= t(f.a) %></p></div>
+        </details>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
 <%- include('partials/foot') %>

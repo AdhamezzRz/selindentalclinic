@@ -33,7 +33,7 @@ function clinicNode(lang) {
       ? 'عيادة سيلين لتجميل الأسنان في القاهرة الجديدة (إيترنا هيلثكير سيتي، كمبوند ميفيدا) مع د. وليد زكي ود. محمد خالد: فينير، تصميم ابتسامة رقمي، زراعة، تبييض، تقويم شفاف وتيجان زركونيا.'
       : 'SÉLIN Dental Aesthetics in New Cairo (Eterna Healthcare City, Mivida) with Dr. Walid Zaki and Dr. Mohammed Khaled: porcelain veneers, digital smile design, dental implants, whitening, clear aligners and zirconia crowns.',
     url: BASE() + '/',
-    logo: { '@type': 'ImageObject', '@id': ID.logo(), url: abs('/img/mark.svg') },
+    logo: { '@type': 'ImageObject', '@id': ID.logo(), url: abs('/icon-512.png'), width: 512, height: 512 },
     image: [abs('/media/poster.jpg'), abs('/media/tour/t07.jpg'), abs('/media/tour/t02.jpg')],
     telephone: config.contact.phone || undefined,
     email: config.contact.email || undefined,
@@ -181,6 +181,8 @@ function buildGraph(o) {
 
   if (kind === 'home') {
     content.treatments.forEach((t) => graph.push(procedureNode(t, lang)));
+  }
+  if (kind === 'book') {
     const f = faqNode(content.faq, lang, url);
     if (f) graph.push(f);
   }

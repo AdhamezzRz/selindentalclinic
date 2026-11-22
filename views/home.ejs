@@ -41,31 +41,11 @@
   </div>
 </section>
 
-<!-- ═════════════ MARQUEE ═════════════ -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <% for (let k = 0; k < 2; k++) { %>
-      <div class="marquee-group">
-        <% s('marquee').forEach(function (m) { %><span><%= m %></span><svg class="marquee-star" viewBox="-1 -1 2 2"><path d="M0 -1 C.1 -.1 .1 -.1 1 0 C.1 .1 .1 .1 0 1 C-.1 .1 -.1 .1 -1 0 C-.1 -.1 -.1 -.1 0 -1Z"/></svg><% }) %>
-      </div>
-    <% } %>
-  </div>
-</div>
-
 <!-- ═════════════ MANIFESTO ═════════════ -->
 <section class="manifesto sec sec--pearl">
   <div class="wrap">
     <p class="eyebrow"><span class="spark"></span><%= s('manifesto.label') %></p>
     <p class="manifesto-text display" data-words><%= s('manifesto.text') %></p>
-    <div class="pillars">
-      <% [1,2,3].forEach(function (i) { %>
-        <div class="pillar reveal">
-          <span class="pillar-no">0<%= i %></span>
-          <h3><%= s('pillar.' + i + '.t') %></h3>
-          <p><%= s('pillar.' + i + '.d') %></p>
-        </div>
-      <% }) %>
-    </div>
   </div>
 </section>
 
@@ -81,6 +61,38 @@
       <h2 class="display film-title"><%= s('film.title') %></h2>
       <p class="film-sub"><%= s('film.sub') %></p>
       <button class="btn btn--gold magnetic" type="button" data-lightbox-open><span class="play-ico" aria-hidden="true"></span><span><%= s('film.play') %></span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ SMILES (after portraits) ═════════════ -->
+<%- include('partials/smiles') %>
+
+<!-- ═════════════ CASES ═════════════ -->
+<section class="cases sec sec--twilight" id="cases">
+  <div class="wrap">
+    <div class="sec-head sec-head--split">
+      <div>
+        <p class="eyebrow"><span class="spark"></span><%= s('cases.label') %></p>
+        <h2 class="display h2 split"><%= s('cases.title') %></h2>
+      </div>
+      <div class="rail-side">
+        <p class="lede reveal"><%= s('cases.sub') %></p>
+        <div class="rail-nav">
+          <button type="button" class="rail-btn" data-rail-prev aria-label="Previous"><span>←</span></button>
+          <button type="button" class="rail-btn" data-rail-next aria-label="Next"><span>→</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="cases-rail" data-rail>
+      <% content.cases.filter(c => c.view !== 'retracted').forEach(function (c) { %><%- include('partials/case', { c }) %><% }) %>
+    </div>
+    <div class="cases-foot">
+      <p class="fine"><span class="spark"></span><%= content.cases.some(c => c.sim && !(c.before && c.after)) ? s('cases.simNote') : s('cases.realNote') %></p>
+      <div class="row-btns">
+        <a class="btn btn--gold magnetic" href="<%= link('/cases') %>"><span><%= s('cases.all') %></span></a>
+        <% if (config.social.instagram) { %><a class="btn btn--ghost magnetic" href="<%= config.social.instagram %>" target="_blank" rel="noopener"><span><%= s('cases.more') %></span></a><% } %>
+      </div>
     </div>
   </div>
 </section>
@@ -110,37 +122,6 @@
   <div class="treat-float" aria-hidden="true"><img alt=""></div>
 </section>
 
-<!-- ═════════════ CASES ═════════════ -->
-<section class="cases sec sec--twilight" id="cases">
-  <div class="wrap">
-    <div class="sec-head sec-head--split">
-      <div>
-        <p class="eyebrow"><span class="spark"></span><%= s('cases.label') %></p>
-        <h2 class="display h2 split"><%= s('cases.title') %></h2>
-      </div>
-      <div class="rail-side">
-        <p class="lede reveal"><%= s('cases.sub') %></p>
-        <div class="rail-nav">
-          <button type="button" class="rail-btn" data-rail-prev aria-label="Previous"><span>←</span></button>
-          <button type="button" class="rail-btn" data-rail-next aria-label="Next"><span>→</span></button>
-        </div>
-      </div>
-    </div>
-    <div class="cases-rail" data-rail>
-      <% content.cases.forEach(function (c) { %><%- include('partials/case', { c }) %><% }) %>
-    </div>
-    <div class="cases-foot">
-      <p class="fine"><span class="spark"></span><%= content.cases.some(c => c.sim && !(c.before && c.after)) ? s('cases.simNote') : s('cases.realNote') %></p>
-      <div class="row-btns">
-        <a class="btn btn--gold magnetic" href="<%= link('/cases') %>"><span><%= s('cases.all') %></span></a>
-        <% if (config.social.instagram) { %><a class="btn btn--ghost magnetic" href="<%= config.social.instagram %>" target="_blank" rel="noopener"><span><%= s('cases.more') %></span></a><% } %>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═════════════ SHADE STUDIO ═════════════ -->
-
 <!-- ═════════════ DOCTORS ═════════════ -->
 <section class="docs sec sec--dark">
   <div class="wrap">
@@ -155,49 +136,8 @@
   </div>
 </section>
 
-<!-- ═════════════ CLINIC TOUR (horizontal) ═════════════ -->
-<section class="tour sec--dark" data-tour>
-  <div class="tour-pin">
-    <div class="tour-head wrap">
-      <p class="eyebrow"><span class="spark"></span><%= s('tour.label') %></p>
-      <h2 class="display h2"><%= s('tour.title') %></h2>
-      <p class="lede"><%= s('tour.sub') %></p>
-    </div>
-    <div class="tour-track" data-tour-track>
-      <% content.tour.forEach(function (f, i) { %>
-        <figure class="tour-card<%= i % 3 === 1 ? ' tour-card--arch' : '' %>">
-          <div class="tour-img"><img src="<%= f.src %>" alt="SÉLIN — <%= t(f.label) %>" loading="lazy" decoding="async"></div>
-          <figcaption><span><%= String(i + 1).padStart(2, '0') %></span><%= t(f.label) %></figcaption>
-        </figure>
-      <% }) %>
-      <a class="tour-card tour-card--end" href="<%= link('/clinic') %>">
-        <span class="display"><%= s('tour.cta') %></span><span class="treat-arrow">→</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═════════════ JOURNEY ═════════════ -->
-<section class="journey sec sec--pearl">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow"><span class="spark"></span><%= s('journey.label') %></p>
-      <h2 class="display h2 split"><%= s('journey.title') %></h2>
-    </div>
-    <ol class="journey-list">
-      <% content.journey.forEach(function (j, i) { %>
-        <li class="journey-step reveal">
-          <span class="journey-no"><%= j.no %></span>
-          <h3 class="display"><%= t(j.title) %></h3>
-          <p><%= t(j.text) %></p>
-        </li>
-      <% }) %>
-    </ol>
-  </div>
-</section>
-
 <!-- ═════════════ REVIEWS ═════════════ -->
-<%- include('partials/reviews') %>
+<% if (content.reviews.length) { %><%- include('partials/reviews') %><% } %>
 
 <!-- ═════════════ JOURNAL ═════════════ -->
 <section class="sec sec--dust journal">
@@ -211,24 +151,6 @@
     </div>
     <div class="blog-grid">
       <% posts.slice(0, 3).forEach(function (p) { %><%- include('partials/postcard', { p }) %><% }) %>
-    </div>
-  </div>
-</section>
-
-<!-- ═════════════ FAQ ═════════════ -->
-<section class="faq sec sec--pearl">
-  <div class="wrap faq-grid">
-    <div>
-      <p class="eyebrow"><span class="spark"></span><%= s('faq.label') %></p>
-      <h2 class="display h2 split"><%= s('faq.title') %></h2>
-    </div>
-    <div class="faq-list">
-      <% content.faq.forEach(function (f) { %>
-        <details class="faq-item reveal">
-          <summary><span><%= t(f.q) %></span><i aria-hidden="true"></i></summary>
-          <div class="faq-a"><p><%= t(f.a) %></p></div>
-        </details>
-      <% }) %>
     </div>
   </div>
 </section>

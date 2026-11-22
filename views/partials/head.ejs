@@ -14,7 +14,10 @@
   <% if (config.google.siteVerification) { %><meta name="google-site-verification" content="<%= config.google.siteVerification %>"><% } %>
   <meta name="author" content="SÉLIN Dental Aesthetics">
   <link rel="alternate" type="text/plain" title="LLM summary" href="/llms.txt">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/img/mark.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
   <meta property="og:type" content="<%= typeof ogType !== 'undefined' && ogType ? ogType : 'website' %>">
   <meta property="og:url" content="<%= canonical %>">
   <meta property="og:locale:alternate" content="<%= lang === 'ar' ? 'en_US' : 'ar_EG' %>">
@@ -41,8 +44,17 @@
 
   <% if (page === 'home') { %>
   <div class="loader" aria-hidden="true">
-    <div class="loader-mark"><%- include('mark') %></div>
-    <div class="loader-meta"><span><%= s('loader.text') %></span><span class="loader-count">0</span></div>
+    <div class="loader-panel loader-panel--top"></div>
+    <div class="loader-panel loader-panel--bot"></div>
+    <span class="loader-seam"></span>
+    <div class="loader-stage">
+      <div class="loader-logo">
+        <span class="loader-beam"></span>
+        <img class="loader-word" src="/img/wordmark.svg" alt="" width="3080" height="1184">
+      </div>
+      <p class="loader-line"><%= s('loader.text') %></p>
+      <span class="loader-bar"><i></i></span>
+    </div>
   </div>
   <% } %>
 

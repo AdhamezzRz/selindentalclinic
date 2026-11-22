@@ -1,0 +1,23 @@
+<% if (content.smiles && content.smiles.length) { %>
+<section class="smiles sec sec--dark">
+  <div class="wrap smiles-head">
+    <div>
+      <p class="eyebrow"><span class="spark"></span><%= s('smiles.label') %></p>
+      <h2 class="display h2 split"><%= s('smiles.title') %></h2>
+    </div>
+    <p class="lede reveal"><%= s('smiles.sub') %></p>
+  </div>
+  <div class="smiles-strip" dir="ltr">
+    <div class="smiles-track">
+      <% for (let k = 0; k < 2; k++) { %>
+        <% content.smiles.forEach(function (src, i) { %>
+          <figure class="smile-card"<% if (k) { %> aria-hidden="true"<% } %>>
+            <img src="<%= src %>" alt="<%= k ? '' : s('smiles.alt') %>" width="1200" height="1500" loading="lazy" decoding="async">
+            <figcaption><span class="spark"></span><%= s('smiles.tag') %></figcaption>
+          </figure>
+        <% }) %>
+      <% } %>
+    </div>
+  </div>
+</section>
+<% } %>

@@ -192,24 +192,26 @@ ul, ol { list-style: none; }
 .has-cursor, .has-cursor a, .has-cursor button, .has-cursor [role="button"], .has-cursor input[type="range"] { cursor: none; }
 
 /* ── Loader ──────────────────────────────────────────────── */
-.loader {
-  position: fixed; inset: 0; z-index: 300;
-  background: var(--lunar); color: var(--pearl);
-  display: grid; place-items: center;
-}
+.loader { position: fixed; inset: 0; z-index: 300; color: var(--pearl); }
 .no-js .loader, .loader.is-skip { display: none; }
-.loader-moon {
-  position: absolute; width: min(52vmin, 420px); aspect-ratio: 1; border-radius: 50%;
-  background: radial-gradient(circle at 40% 35%, #efe6d3 0%, var(--champagne) 45%, #8f7b59 100%);
-  box-shadow: 0 0 120px rgba(196, 176, 138, .35);
-  overflow: hidden; opacity: .9;
-}
-.loader-shadow { position: absolute; inset: -2%; border-radius: 50%; background: var(--lunar); transform: translateX(var(--shadow, 0%)); }
-.loader-mark { position: relative; width: 74px; color: var(--pearl); mix-blend-mode: difference; }
-.loader-mark .mark-e { stroke-dasharray: 360; stroke-dashoffset: 360; }
-.loader-meta { position: absolute; bottom: 40px; inset-inline: var(--gutter); display: flex; justify-content: space-between; font-size: 12px; letter-spacing: .28em; text-transform: uppercase; color: var(--smoke); }
-.loader-count { font-family: var(--f-display); font-size: 64px; letter-spacing: 0; color: var(--pearl); line-height: .8; }
-[lang="ar"] .loader-meta { letter-spacing: 0; }
+.loader-panel { position: absolute; left: 0; right: 0; height: 50.5%; background: var(--lunar); }
+.loader-panel--top { top: 0; border-bottom: 1px solid rgba(196, 176, 138, .0); }
+.loader-panel--bot { bottom: 0; }
+.loader-stage { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px; padding: 0 var(--gutter); }
+.loader-logo { --r: -25%; position: relative; width: min(58vw, 460px); }
+.loader-word { display: block; width: 100%; height: auto;
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(var(--r) - 14%), rgba(0,0,0,.35) var(--r), transparent calc(var(--r) + 10%));
+  mask-image: linear-gradient(90deg, #000 calc(var(--r) - 14%), rgba(0,0,0,.35) var(--r), transparent calc(var(--r) + 10%)); }
+[dir="rtl"] .loader-word { -webkit-mask-image: linear-gradient(270deg, #000 calc(var(--r) - 14%), rgba(0,0,0,.35) var(--r), transparent calc(var(--r) + 10%)); mask-image: linear-gradient(270deg, #000 calc(var(--r) - 14%), rgba(0,0,0,.35) var(--r), transparent calc(var(--r) + 10%)); }
+.loader-beam { position: absolute; top: -60%; bottom: -60%; width: 34%; left: calc(var(--r) - 17%); pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(196, 176, 138, .22) 45%, rgba(245, 241, 235, .28) 50%, rgba(196, 176, 138, .22) 55%, transparent);
+  filter: blur(18px); transform: skewX(-14deg); }
+[dir="rtl"] .loader-beam { left: auto; right: calc(var(--r) - 17%); transform: skewX(14deg); }
+.loader-line { font-family: 'Cormorant Garamond', var(--f-display); font-style: italic; font-weight: 300; font-size: clamp(18px, 1.6vw, 24px); letter-spacing: .08em; color: rgba(245, 241, 235, .7); }
+[lang="ar"] .loader-line { font-family: var(--f-display); font-style: normal; letter-spacing: 0; }
+.loader-bar { position: absolute; bottom: 44px; left: 50%; width: min(220px, 40vw); height: 1px; transform: translateX(-50%); background: rgba(245, 241, 235, .12); overflow: hidden; }
+.loader-bar i { position: absolute; inset: 0; background: var(--champagne); transform-origin: left; transform: scaleX(0); }
+[dir="rtl"] .loader-bar i { transform-origin: right; }
 
 /* ── Navigation ──────────────────────────────────────────── */
 .nav {
@@ -933,7 +935,6 @@ input[type="range"]::-moz-range-progress { height: 2px; background: var(--champa
 .logo--sm { width: 132px; }
 .nav.is-scrolled .logo--sm { width: 116px; transition: width .5s var(--ease); }
 img.mark { width: 100%; height: auto; display: block; }
-.loader-mark { width: 64px; }
 .footer-brand .mark { width: 40px; }
 .bform-ok-moon { display: grid; place-items: center; padding: 18px; }
 .footer-giant img { width: min(100%, 1280px); height: auto; opacity: .1; -webkit-mask-image: linear-gradient(180deg, #000 30%, transparent 100%); mask-image: linear-gradient(180deg, #000 30%, transparent 100%); }
@@ -957,3 +958,19 @@ img.mark { width: 100%; height: auto; display: block; }
 .ba-moon { width: 40px; height: 40px; background: var(--pearl); box-shadow: 0 6px 20px rgba(0, 0, 0, .35); }
 .ba-moon i::before { border-right-color: var(--lunar); }
 .grain { opacity: .03; }
+
+/* ════════════ Smiles — after portraits (slow drifting strip) ════════════ */
+.smiles { overflow: hidden; }
+.smiles-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; margin-bottom: clamp(40px, 5vw, 72px); }
+.smiles-head .h2 { max-width: 14ch; }
+.smiles-strip { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.smiles-track { display: flex; gap: clamp(14px, 1.6vw, 24px); width: max-content; animation: drift 70s linear infinite; }
+.smiles-strip:hover .smiles-track { animation-play-state: paused; }
+@keyframes drift { to { transform: translateX(-50%); } }
+.smile-card { position: relative; flex: none; width: clamp(220px, 22vw, 330px); aspect-ratio: 4 / 5; border-radius: var(--radius); overflow: hidden; background: var(--twilight); }
+.smile-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease); }
+.smile-card:hover img { transform: scale(1.04); }
+.smile-card figcaption { position: absolute; left: 16px; bottom: 14px; display: inline-flex; gap: 8px; align-items: center; padding: 6px 12px; border-radius: 99px; background: rgba(15, 21, 32, .55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--pearl); }
+.smile-card figcaption .spark { width: 8px; height: 8px; color: var(--champagne); }
+[lang="ar"] .smile-card figcaption { letter-spacing: 0; font-size: 12px; }
+.loader-seam { position: absolute; left: 0; right: 0; top: 50%; height: 1px; transform: scaleX(0); transform-origin: center; background: linear-gradient(90deg, transparent, var(--champagne) 20%, #F5F1EB 50%, var(--champagne) 80%, transparent); box-shadow: 0 0 18px rgba(196, 176, 138, .7); z-index: 2; }

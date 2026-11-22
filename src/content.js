@@ -491,4 +491,17 @@ const faq = [
  */
 const reviews = [];
 
-module.exports = { doctors, treatments, cases, journey, tour, faq, reviews };
+/**
+ * SMILES — "after" portraits of real guests (shown on the home page).
+ * Drop 4:5 portraits (1200×1500) into public/media/smiles/ — they appear automatically.
+ */
+const smiles = (() => {
+  try {
+    const dir = require('path').join(__dirname, '..', 'public', 'media', 'smiles');
+    return require('fs').readdirSync(dir).filter((f) => /\.(jpe?g|webp|png)$/i.test(f)).sort().map((f) => `/media/smiles/${f}`);
+  } catch (e) {
+    return [];
+  }
+})();
+
+module.exports = { doctors, treatments, cases, journey, tour, faq, reviews, smiles };

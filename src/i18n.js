@@ -54,7 +54,7 @@ const ui = {
   'nav.close': { en: 'Close', ar: 'إغلاق' },
   'nav.lang': { en: 'عربي', ar: 'English' },
 
-  'loader.text': { en: 'Crafting light', ar: 'نصنع الضوء' },
+  'loader.text': { en: 'She who radiates gentle light', ar: 'التي تشعّ ضوءًا لطيفًا' },
 
   'hero.eyebrow': { en: 'Dental Aesthetics Studio', ar: 'استوديو تجميل الأسنان' },
   'hero.l1': { en: 'Where smiles', ar: 'حيث تُصنع' },
@@ -125,6 +125,11 @@ const ui = {
   },
   'cases.more': { en: 'See more on Instagram', ar: 'شاهد المزيد على إنستجرام' },
 
+  'smiles.label': { en: 'After SÉLIN', ar: 'بعد سيلين' },
+  'smiles.title': { en: 'Every smile, its own light.', ar: 'لكل ابتسامة ضوؤها الخاص.' },
+  'smiles.sub': { en: 'Real guests, photographed after their treatment at SÉLIN.', ar: 'ضيوف حقيقيون، تم تصويرهم بعد علاجهم في سيلين.' },
+  'smiles.tag': { en: 'After', ar: 'بعد' },
+  'smiles.alt': { en: 'A SÉLIN guest smiling after treatment', ar: 'ضيف سيلين يبتسم بعد العلاج' },
   'docs.label': { en: 'The doctors', ar: 'الأطباء' },
   'docs.title': { en: 'Two doctors. One obsession.', ar: 'طبيبان. وشغف واحد.' },
   'docs.meet': { en: 'Meet the doctors', ar: 'تعرّف على الأطباء' },

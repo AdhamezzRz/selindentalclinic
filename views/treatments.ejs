@@ -17,5 +17,23 @@
   </div>
 </section>
 
+<section class="journey sec sec--pearl">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow"><span class="spark"></span><%= s('journey.label') %></p>
+      <h2 class="display h2 split"><%= s('journey.title') %></h2>
+    </div>
+    <ol class="journey-list">
+      <% content.journey.forEach(function (j, i) { %>
+        <li class="journey-step reveal">
+          <span class="journey-no"><%= j.no %></span>
+          <h3 class="display"><%= t(j.title) %></h3>
+          <p><%= t(j.text) %></p>
+        </li>
+      <% }) %>
+    </ol>
+  </div>
+</section>
+
 <%- include('partials/cta') %>
 <%- include('partials/foot') %>
