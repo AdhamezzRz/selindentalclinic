@@ -221,6 +221,101 @@
   lb && lb.addEventListener('click', (e) => { if (e.target === lb || e.target.closest('[data-lightbox-close]')) closeLB(); });
   addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLB(); setMenu(false); } });
 
+  /* ── Hero reel (phones): sound, progress, double-tap stars ── */
+  const mqPhone = window.matchMedia('(max-width: 860px)');
+  const reel = $('[data-reel]');
+  if (reel) {
+    const video = $('.hero-video', reel);
+    const bar = $('[data-reel-progress]');
+    const soundBtn = $('[data-reel-sound]');
+    const hint = $('[data-reel-hint]');
+    let soundOn = false;
+    video.addEventListener('timeupdate', () => {
+      if (bar && video.duration) bar.style.transform = `scaleX(${(video.currentTime / video.duration).toFixed(4)})`;
+    });
+    const setSound = (on) => {
+      soundOn = on;
+      if (on && !video.dataset.hq) {
+        // switch to the full-quality film (with audio) at the same moment
+        const t = video.currentTime;
+        video.dataset.hq = '1';
+        video.src = '/media/selin-promo.mp4';
+        video.addEventListener('loadedmetadata', () => { video.currentTime = t; video.play().catch(() => {}); }, { once: true });
+      }
+      video.muted = !on;
+      video.play().catch(() => {});
+      if (soundBtn) { soundBtn.classList.toggle('is-on', on); soundBtn.setAttribute('aria-pressed', String(on)); }
+      if (hint) hint.classList.add('is-gone');
+    };
+    soundBtn && soundBtn.addEventListener('click', (e) => { e.stopPropagation(); setSound(!soundOn); });
+
+    const burst = (x, y) => {
+      const host = $('[data-reel-burst]', reel);
+      if (!host) return;
+      const star = 'M0 -1 C.12 -.12 .12 -.12 1 0 C.12 .12 .12 .12 0 1 C-.12 .12 -.12 .12 -1 0 C-.12 -.12 -.12 -.12 0 -1Z';
+      const big = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      big.setAttribute('viewBox', '-1 -1 2 2');
+      big.setAttribute('class', 'burst-big');
+      big.innerHTML = `<path d="${star}"/>`;
+      big.style.left = x + 'px'; big.style.top = y + 'px';
+      host.appendChild(big);
+      const parts = [big];
+      for (let i = 0; i < 10; i++) {
+        const s = big.cloneNode(true);
+        s.setAttribute('class', 'burst-spark');
+        host.appendChild(s);
+        parts.push(s);
+        const a = (Math.PI * 2 * i) / 10 + Math.random() * 0.4;
+        const d = 70 + Math.random() * 70;
+        if (hasGSAP && !reduced) {
+          gsap.fromTo(s, { x: 0, y: 0, scale: 0.2, opacity: 1 }, { x: Math.cos(a) * d, y: Math.sin(a) * d, scale: 0.5 + Math.random() * 0.6, opacity: 0, rotate: 90, duration: 0.9 + Math.random() * 0.4, ease: 'expo.out' });
+        }
+      }
+      if (hasGSAP && !reduced) {
+        gsap.fromTo(big, { scale: 0, opacity: 1, rotate: -30 }, { scale: 1, rotate: 0, duration: 0.5, ease: 'back.out(2.2)' });
+        gsap.to(big, { scale: 1.4, opacity: 0, duration: 0.5, delay: 0.55, ease: 'power2.in' });
+      }
+      if (navigator.vibrate) navigator.vibrate(12);
+      setTimeout(() => parts.forEach((p) => p.remove()), 1500);
+    };
+
+    let tapTimer = null;
+    reel.addEventListener('click', (e) => {
+      if (!mqPhone.matches) { openLB(); return; }
+      const r = reel.getBoundingClientRect();
+      const x = e.clientX - r.left, y = e.clientY - r.top;
+      if (tapTimer) { clearTimeout(tapTimer); tapTimer = null; burst(x, y); return; }
+      tapTimer = setTimeout(() => { tapTimer = null; setSound(!soundOn); }, 260);
+    });
+    reel.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLB(); } });
+  }
+
+  /* share */
+  $$('[data-share]').forEach((b) => b.addEventListener('click', async (e) => {
+    e.stopPropagation();
+    const data = { title: b.dataset.shareTitle || document.title, url: location.href };
+    try {
+      if (navigator.share) await navigator.share(data);
+      else { await navigator.clipboard.writeText(location.href); toast(b.dataset.copied || 'Link copied'); }
+    } catch (err) { /* cancelled */ }
+  }));
+  function toast(msg) {
+    const t = document.createElement('div');
+    t.className = 'toast'; t.textContent = msg;
+    document.body.appendChild(t);
+    requestAnimationFrame(() => t.classList.add('is-on'));
+    setTimeout(() => { t.classList.remove('is-on'); setTimeout(() => t.remove(), 500); }, 1800);
+  }
+
+  /* mobile dock: appears once you scroll past the first screen */
+  const dock = $('[data-dock]');
+  if (dock) {
+    const onDock = (y) => dock.classList.toggle('is-on', y > window.innerHeight * 0.6);
+    if (lenis) lenis.on('scroll', ({ scroll }) => onDock(scroll));
+    else window.addEventListener('scroll', () => onDock(window.scrollY), { passive: true });
+    onDock(window.scrollY);
+  }
+
   /* ════════════════════════════════════════════════════════
      SMILE RENDERER — illustrative SVG smiles (cases + studio)
      ════════════════════════════════════════════════════════ */

@@ -66,6 +66,13 @@ const ui = {
   },
   'hero.cta': { en: 'Design my smile', ar: 'صمّم ابتسامتي' },
   'hero.film': { en: 'Watch the film', ar: 'شاهد الفيلم' },
+  'reel.where': { en: 'New Cairo · Mivida', ar: 'القاهرة الجديدة · ميفيدا' },
+  'reel.follow': { en: 'Follow', ar: 'متابعة' },
+  'reel.sound': { en: 'Sound on / off', ar: 'تشغيل / إيقاف الصوت' },
+  'reel.share': { en: 'Share', ar: 'مشاركة' },
+  'reel.copied': { en: 'Link copied', ar: 'تم نسخ الرابط' },
+  'reel.hint': { en: 'Tap for sound · double-tap to shine', ar: 'المس للصوت · المس مرتين للتألق' },
+  'dock.call': { en: 'Call', ar: 'اتصال' },
   'hero.scroll': { en: 'Scroll to enter', ar: 'مرر للدخول' },
 
   'marquee': {
